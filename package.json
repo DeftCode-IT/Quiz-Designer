@@ -1,0 +1,30 @@
+{
+  "name": "quiz_designer",
+  "version": "1.0.0",
+  "description": "quiz & chill",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcdeveloperstudio/quiz_Designer.git"
+  },
+  "keywords": [
+    "quiz",
+    "designer",
+    "node",
+    "react"
+  ],
+  "author": "mcdeveloper, deftcode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcdeveloperstudio/quiz_Designer/issues"
+  },
+  "homepage": "https://github.com/mcdeveloperstudio/quiz_Designer#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.9"
+  }
+}

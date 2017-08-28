@@ -1,0 +1,72 @@
+var mongoose        = require("mongoose"),
+    quiz            = require("./models/quiz"),
+    question        = require("./models/question");
+
+
+var data = [
+    {
+    title: 'Jak bardzo znasz Gwiezdne Wojny?', 
+    description: 'Sprawdź swoją wiedzę z uniwersum Harrego Pottera',
+    successMessage: 'Jesteś maniakiem HP!',
+    failureMessage: 'Wynik tego quizu to znak, że jesteś mugolem',
+    pointsToSuccess: 5,
+    editMode: true,
+    version: 0.1,
+    createdBy: 'Rowling'
+    },
+    {
+        title: 'Javascript ES6 quiz', 
+        description: 'Czy znasz już wszystkie możliwości ES6?',
+        successMessage: 'Rządzisz!',
+        failureMessage: 'Spróbuj ponownie...',
+        pointsToSuccess: 10,
+        editMode: true,
+        version: 0.1,
+        createdBy: 'JsNinja'
+        }
+
+];
+    
+function seedDB(){
+
+    //Delete all quizes.
+
+    quiz.remove({}, function(err){
+    if(err){
+        console.log(err);
+    }
+    console.log("Skasowałem wszystkie quizy!");
+    
+        //Add few new quizes.
+        data.forEach(function(seed){
+            quiz.create(seed, function(err, quiz){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log('Quiz dodany');
+                    question.create(
+                        {
+                            type: 'single',
+                            question: 'Pytanie 1',
+                            answers: [
+                                'a',
+                                'b',
+                                'c'
+                            ],
+                            correctAnswers: ['a']
+                        }, function(err, question){
+                            if(err){
+                                console.log(err);
+                            }
+                            quiz.questions.push(question);
+                            quiz.save();
+                            console.log('Created new question!');
+                        });
+                }
+            });
+        });
+    });
+}
+
+module.exports = seedDB;
+
