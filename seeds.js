@@ -35,15 +35,16 @@ function seedDB(){
     if(err){
         console.log(err);
     }
-    console.log('Skasowałem wszystkie quizy!');
+    console.log('all quizzess deleted');
     
         //Add few new quizes.
         data.forEach(seed => {
             quiz.create(seed, (err, quiz) => {
                 if(err){
-                    console.log(err);
+                    return console.log(err);
+                    
                 }else{
-                    console.log('Quiz dodany');
+                    console.log('Quiz created');
                     question.create(
                         {
                             type: 'single',
@@ -56,7 +57,8 @@ function seedDB(){
                             correctAnswers: ['a']
                         },(err, question) =>{
                             if(err){
-                                console.log(err);
+                                return console.log(err);
+                            
                             }
                             quiz.questions.push(question);
                             quiz.save();
