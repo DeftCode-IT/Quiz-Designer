@@ -1,6 +1,6 @@
-var mongoose        = require("mongoose"),
-    quiz            = require("./models/quiz"),
-    question        = require("./models/question");
+const mongoose        = require('mongoose');
+const quiz            = require('./models/quiz');
+const question        = require('./models/question');
 
 
 var data = [
@@ -31,15 +31,15 @@ function seedDB(){
 
     //Delete all quizes.
 
-    quiz.remove({}, function(err){
+    quiz.remove({}, err => {
     if(err){
         console.log(err);
     }
-    console.log("Skasowałem wszystkie quizy!");
+    console.log('Skasowałem wszystkie quizy!');
     
         //Add few new quizes.
-        data.forEach(function(seed){
-            quiz.create(seed, function(err, quiz){
+        data.forEach(seed => {
+            quiz.create(seed, (err, quiz) => {
                 if(err){
                     console.log(err);
                 }else{
@@ -54,7 +54,7 @@ function seedDB(){
                                 'c'
                             ],
                             correctAnswers: ['a']
-                        }, function(err, question){
+                        },(err, question) =>{
                             if(err){
                                 console.log(err);
                             }

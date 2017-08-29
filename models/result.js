@@ -1,10 +1,9 @@
+const mongoose = require('mongoose');
 
-var mongoose = require('mongoose');
-
-var resultSchema = mongoose.Schema({
+const resultSchema = mongoose.Schema({
     user: String,
     quiz: String,
-    answers: [],
+    answers: [Number],
     passed: Boolean
 });
 

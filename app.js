@@ -1,24 +1,20 @@
-var express         = require("express"),
-    app             = express(),
-    bodyParser      = require("body-parser"),
-    mongoose        = require("mongoose"),
-    quiz            = require("./models/quiz"),
-    question        = require("./models/question"),
-    result          = require("./models/result"),
-    seedDB          = require("./seeds");
+const    express         = require('express');
+const    app             = express();
+const    bodyParser      = require('body-parser');
+const    mongoose        = require('mongoose');
+const    quiz            = require('./models/quiz');
+const    question        = require('./models/question');
+const    result          = require('./models/result');
+const    seedDB          = require('./seeds');
 
 
 seedDB();
-mongoose.connect("mongodb://localhost/quizDesigner");
-app.use(bodyParser.urlencoded({extended: true}));
+mongoose.connect('mongodb://mo1368_quiz:Designer2017!@mongo14.mydevil.net:27017/mo1368_quiz');
 
-
-var db = mongoose.connection;
+const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function() {
-    console.log('Udało się połączyć');
+    console.log('mongoose connected');
   });
 
-  app.listen(3000, function () {
-    console.log('Quiz_designer działa na porcie 3000');
-  });
+  app.listen(3000, () => console.log('Quiz_designer working on port: 3000'));

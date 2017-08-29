@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var quizSchema = mongoose.Schema({
+const quizSchema = mongoose.Schema({
     title: String, 
     description: String,
     successMessage: String,
@@ -10,7 +10,7 @@ var quizSchema = mongoose.Schema({
     editMode: Boolean,
     version: Number,
     createdBy: String,
-    questions: []
+    questions: [String]
 });
 
 module.exports = mongoose.model('quiz', quizSchema);

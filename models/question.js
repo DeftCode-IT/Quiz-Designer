@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var questionSchema = mongoose.Schema({
+const questionSchema = mongoose.Schema({
     type: String,
     question: String,
-    answers: [],
-    correctAnswers: []
+    answers: [String],
+    correctAnswers: [Number]
 });
 
 module.exports = mongoose.model('question', questionSchema);
