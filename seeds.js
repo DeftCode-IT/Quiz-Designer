@@ -30,13 +30,13 @@ var data = [
 function seedDB(){
 
     //Delete all quizes.
-
-    quiz.remove({}, err => {
-    if(err){
-        console.log(err);
-    }
-    console.log('all quizzess deleted');
     
+     quiz.remove({}, err => {
+     if(err){
+         return err;
+     }
+     console.log('all quizzess deleted');
+
         //Add few new quizes.
         data.forEach(seed => {
             quiz.create(seed, (err, quiz) => {
@@ -54,16 +54,17 @@ function seedDB(){
                                 'b',
                                 'c'
                             ],
-                            correctAnswers: ['a']
+                            correctAnswers: [1]
                         },(err, question) =>{
                             if(err){
                                 return console.log(err);
-                            
                             }
                             quiz.questions.push(question);
                             quiz.save();
                             console.log('Created new question!');
-                        });
+                        }
+                        
+                    );
                 }
             });
         });
