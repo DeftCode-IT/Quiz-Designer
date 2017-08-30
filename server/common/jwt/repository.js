@@ -2,13 +2,12 @@ const jwt       = require('jsonwebtoken');
 const _         = require('lodash');
 const p         = require('bluebird');
 const config    = require('src/config');
+const errors    = require('src/constants').errors;
 const jwtConfig = config.jwt;
-const errors    = config.errors;
 
 const jwtVerify = p.promisify(jwt.verify);
 
 const verifyToken = (token) => {
-
     if (!token) {
         return p.reject(Error(errors.MISSING_AUTHORIZATION_HEADER.name));
     }
@@ -19,7 +18,6 @@ const verifyToken = (token) => {
 
     return jwtVerify(token, jwtConfig.secret)
         .then(decoded => {
-
             if(!decoded) {
                 return p.reject(Error(errors.MISSING_TOKEN.name));
             }
@@ -38,7 +36,7 @@ const generateToken = (payload) => {
         return p.reject(Error(errors.NO_JWT_SECRET_ENV_VARIABLE.name));
     }
 
-    let copiedPayload = _.assign({}, payload);
+    const copiedPayload = _.assign({}, payload);
 
     return jwt.sign(copiedPayload, jwtConfig.secret, { expiresIn: config.jwt.expiresIn });
 };

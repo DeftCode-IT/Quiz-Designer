@@ -1,11 +1,9 @@
 const verifyToken   = require('./repository').verifyToken;
-const _             = require('lodash');
 const generateToken = require('./repository').generateToken;
+const _             = require('lodash');
 
-const auth = (req, res, next) => {
-    const token = req.query.token || (req.body && req.body.token) || req.headers.auth || req.headers.authorization;
-
-    return verifyToken(token)
+const authenticate = (req, res, next) => {
+    return verifyToken(req.headers.authorization)
         .then(payload => {
             _.assign(req, { resources: { payload } });
             next();
@@ -14,6 +12,6 @@ const auth = (req, res, next) => {
 };
 
 module.exports = {
-    auth,
+    authenticate,
     generateToken
 };
