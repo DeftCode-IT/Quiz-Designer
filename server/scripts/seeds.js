@@ -1,5 +1,9 @@
-const quiz = require('src/models/quiz');
-const question = require('src/models/question');
+const quizModel = require('src/models/quiz');
+const questionModel = require('src/models/question');
+const mongoose = require('mongoose');
+const p = require('bluebird');
+
+mongoose.Promise = p;
 
 const data = [
     {
@@ -24,45 +28,26 @@ const data = [
     },
 ];
 
-function seedDB() {
-    //Delete all quizes.
-    quiz.remove({}, err => {
-        if (err) {
-            return err
-        }
-        console.log('all quizzess deleted')
-
-        //Add few new quizes.
-        data.forEach(seed => {
-            quiz.create(seed, (err, quiz) => {
-                if (err) {
-                    return console.log(err)
-
-                } else {
-                    console.log('Quiz created')
-                    question.create(
-                        {
-                            type: 'single',
-                            question: 'Pytanie 1',
-                            answers: [
-                                'a',
-                                'b',
-                                'c',
-                            ],
-                            correctAnswers: [1],
-                        }, (err, question) => {
-                            if (err) {
-                                return console.log(err)
-                            }
-                            quiz.questions.push(question)
-                            quiz.save()
-                            console.log('Created new question!')
-                        },
-                    )
-                }
-            })
-        })
-    })
+const questionExample = {
+    type: 'single',
+    question: 'Pytanie 1',
+    answers: [
+        'a',
+        'b',
+        'c',
+    ],
+    correctAnswers: [1],
 };
+
+const seedDB = () => quizModel.remove({})
+    .then(() => {
+        const quizs = [];
+
+        data.forEach(seed => quizs.push(quizModel.create(seed)));
+
+        return p.all(quizs);
+    })
+    .map(quiz => questionModel.create(questionExample)
+        .then(question => quizModel.findByIdAndUpdate(quiz._id, {$push: {"questions": question._id}})));
 
 module.exports = seedDB;
