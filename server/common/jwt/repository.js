@@ -24,6 +24,9 @@ const verifyToken = (token) => {
 
             return decoded;
         })
+        .catch(() => {
+            return p.reject(Error(errors.EXPIRED_TOKEN.name));
+        })
 
 };
 
@@ -38,7 +41,7 @@ const generateToken = (payload) => {
 
     const copiedPayload = _.assign({}, payload);
 
-    return jwt.sign(copiedPayload, jwtConfig.secret, { expiresIn: config.jwt.expiresIn });
+    return jwt.sign(copiedPayload, jwtConfig.secret, config.signOptions);
 };
 
 module.exports = {

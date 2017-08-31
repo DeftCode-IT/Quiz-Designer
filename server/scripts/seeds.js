@@ -1,7 +1,7 @@
-const quizModel = require('src/models/quiz');
+const mongoose      = require('mongoose');
+const p             = require('bluebird');
+const quizModel     = require('src/models/quiz');
 const questionModel = require('src/models/question');
-const mongoose = require('mongoose');
-const p = require('bluebird');
 
 mongoose.Promise = p;
 
@@ -13,7 +13,7 @@ const data = [
         failureMessage: 'Wynik tego quizu to znak, że jesteś mugolem',
         pointsToSuccess: 5,
         editMode: true,
-        version: 0.1,
+        version: 1,
         createdBy: 'Rowling',
     },
     {
@@ -23,7 +23,7 @@ const data = [
         failureMessage: 'Spróbuj ponownie...',
         pointsToSuccess: 10,
         editMode: true,
-        version: 0.1,
+        version: 1,
         createdBy: 'JsNinja',
     },
 ];
