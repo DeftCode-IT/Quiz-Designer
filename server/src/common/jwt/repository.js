@@ -1,9 +1,9 @@
-const jwt       = require('jsonwebtoken');
-const _         = require('lodash');
-const p         = require('bluebird');
-const config    = require('src/config');
-const errors    = require('src/constants').errors;
-const jwtConfig = config.jwt;
+const jwt          = require('jsonwebtoken');
+const _            = require('lodash');
+const p            = require('bluebird');
+const config       = require('./../config');
+const { errors }   = require('./../constants');
+const jwtConfig    = config.jwt;
 
 const jwtVerify = p.promisify(jwt.verify);
 
