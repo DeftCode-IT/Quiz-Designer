@@ -1,0 +1,11 @@
+{
+    "rules": {
+        "no-underscore-dangle": ["off"],
+        "max-len": ["warn", 200],
+        "indent": ["error", 2]
+    },
+    "env": {
+        "node": true
+    },
+    "extends": "airbnb-base"
+}
