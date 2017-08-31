@@ -1,70 +1,53 @@
-const quiz = require('../models/quiz')
-const question = require('../models/question')
+const mongoose      = require('mongoose');
+const p             = require('bluebird');
+const quizModel     = require('src/models/quiz');
+const questionModel = require('src/models/question');
+
+mongoose.Promise = p;
 
 const data = [
-  {
-    title: 'Jak bardzo znasz Gwiezdne Wojny?',
-    description: 'Sprawdź swoją wiedzę z uniwersum Harrego Pottera',
-    successMessage: 'Jesteś maniakiem HP!',
-    failureMessage: 'Wynik tego quizu to znak, że jesteś mugolem',
-    pointsToSuccess: 5,
-    editMode: true,
-    version: 0.1,
-    createdBy: 'Rowling',
-  },
-  {
-    title: 'Javascript ES6 quiz',
-    description: 'Czy znasz już wszystkie możliwości ES6?',
-    successMessage: 'Rządzisz!',
-    failureMessage: 'Spróbuj ponownie...',
-    pointsToSuccess: 10,
-    editMode: true,
-    version: 0.1,
-    createdBy: 'JsNinja',
-  },
+    {
+        title: 'Jak bardzo znasz Gwiezdne Wojny?',
+        description: 'Sprawdź swoją wiedzę z uniwersum Harrego Pottera',
+        successMessage: 'Jesteś maniakiem HP!',
+        failureMessage: 'Wynik tego quizu to znak, że jesteś mugolem',
+        pointsToSuccess: 5,
+        editMode: true,
+        version: 1,
+        createdBy: 'Rowling',
+    },
+    {
+        title: 'Javascript ES6 quiz',
+        description: 'Czy znasz już wszystkie możliwości ES6?',
+        successMessage: 'Rządzisz!',
+        failureMessage: 'Spróbuj ponownie...',
+        pointsToSuccess: 10,
+        editMode: true,
+        version: 1,
+        createdBy: 'JsNinja',
+    },
+];
 
-]
+const questionExample = {
+    type: 'single',
+    question: 'Pytanie 1',
+    answers: [
+        'a',
+        'b',
+        'c',
+    ],
+    correctAnswers: [1],
+};
 
-function seedDB () {
-  //Delete all quizes.
-  quiz.remove({}, err => {
-    if (err) {
-      return err
-    }
-    console.log('all quizzess deleted')
+const seedDB = () => quizModel.remove({})
+    .then(() => {
+        const quizs = [];
 
-    //Add few new quizes.
-    data.forEach(seed => {
-      quiz.create(seed, (err, quiz) => {
-        if (err) {
-          return console.log(err)
+        data.forEach(seed => quizs.push(quizModel.create(seed)));
 
-        } else {
-          console.log('Quiz created')
-          question.create(
-            {
-              type: 'single',
-              question: 'Pytanie 1',
-              answers: [
-                'a',
-                'b',
-                'c',
-              ],
-              correctAnswers: [1],
-            }, (err, question) => {
-              if (err) {
-                return console.log(err)
-              }
-              quiz.questions.push(question)
-              quiz.save()
-              console.log('Created new question!')
-            },
-          )
-        }
-      })
+        return p.all(quizs);
     })
-  })
-}
+    .map(quiz => questionModel.create(questionExample)
+        .then(question => quizModel.findByIdAndUpdate(quiz._id, {$push: {"questions": question._id}})));
 
-module.exports = seedDB
-
+module.exports = seedDB;

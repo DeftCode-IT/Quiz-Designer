@@ -1,5 +1,6 @@
-const express = require('express');
+require('module-alias/register');
+const express   = require('express');
+const config    = require('./config');
+const app       = express();
 
-const app = express();
-
-app.listen(3000, () => console.log('Server is working on port: 3000'));
+app.listen(config.http.port, () => console.log(`Server is working on port: ${config.http.port}`));

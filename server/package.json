@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "_moduleAliases": {
+    "src": "./"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mcdeveloperstudio/quiz_Designer.git"
@@ -23,8 +26,12 @@
   },
   "homepage": "https://github.com/mcdeveloperstudio/quiz_Designer#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
+    "jsonwebtoken": "^7.4.3",
+    "lodash": "^4.17.4",
+    "module-alias": "^2.0.1",
     "mongoose": "^4.11.9"
   }
 }
