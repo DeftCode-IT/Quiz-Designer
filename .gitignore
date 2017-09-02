@@ -2,4 +2,6 @@
 .vscode
 
 /server/node_modules
+/server/quiz-app.log
+
 /client/node_modules

@@ -24,5 +24,4 @@ module.exports = {
     message: 'Token expired',
     code: 401,
   },
-
 };

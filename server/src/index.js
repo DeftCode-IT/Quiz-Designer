@@ -7,5 +7,4 @@ const app = express();
 
 app.use(morgan('dev', { stream: { write: message => logger.info(message) } }));
 
-
-app.listen(config.http.port, () => console.log(`Server is working on port: ${config.http.port}`));
+app.listen(config.http.port, () => logger.info(`Server is working on port: ${config.http.port}`));

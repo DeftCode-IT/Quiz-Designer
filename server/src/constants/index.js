@@ -1,5 +1,3 @@
 const errors = require('./errors');
 
-module.exports = {
-  errors,
-};
+module.exports = { errors };

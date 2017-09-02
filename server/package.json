@@ -2,10 +2,10 @@
   "name": "quiz_designer",
   "version": "1.0.0",
   "description": "quiz & chill",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "eslint --fix src/**",
-    "start": "nodemon index.js --exec \"npm run test\""
+    "start": "nodemon ./src/index.js --exec \"npm run test && node\""
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const p = require('bluebird');
-const config = require('./../../config');
-const { errors } = require('./../../constants');
+const config = require('../../config');
+const { errors } = require('../../constants/index');
 
 const jwtConfig = config.jwt;
 
