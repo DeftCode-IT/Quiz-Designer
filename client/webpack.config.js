@@ -20,6 +20,9 @@ module.exports = {
   },
   module: {
     loaders: [
+      { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/, enforce: 'pre', options: {
+        formatter: require('eslint-friendly-formatter')
+      }},
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.scss$/, loaders: ExtractTextPlugin.extract('css-loader!sass-loader') }

@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export class Example extends Component {
-  constructor (props) {
-    super(props);
-  }
+const Example = props => <h1>{props.text}</h1>;
 
-  render () {
-    return <h1>{this.props.text}</h1>
-  }
-}
+Example.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+export default Example;
