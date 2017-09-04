@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "no-underscore-dangle": ["off"],
+        "max-len": ["warn", 200],
+        "indent": ["error", 2],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }]
+    },
+    "env": {
+        "browser": true
+    },
+    "extends": "airbnb"
+}
