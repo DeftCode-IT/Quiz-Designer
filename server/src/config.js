@@ -8,4 +8,22 @@ module.exports = {
       expiresIn: 60 * 60 * 24 * 7,
     },
   },
+  logger: {
+    transports: {
+      console: {
+        level: 'silly',
+        colorize: true,
+        timestamp: true,
+      },
+      file: {
+        level: 'error',
+        timestamp: true,
+        filename: 'quiz-app.log',
+        json: false,
+        maxsize: 5000000,
+        maxFiles: 5,
+        prettyPrint: true,
+      },
+    },
+  },
 };

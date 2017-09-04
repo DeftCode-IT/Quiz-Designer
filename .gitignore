@@ -3,6 +3,7 @@
 
 
 /server/node_modules
+/server/quiz-app.log
 /server/package-lock.json
 
 /client/node_modules
