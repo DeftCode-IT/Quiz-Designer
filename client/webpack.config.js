@@ -8,7 +8,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 });
 
-const ExtractTextPluginConfig = new ExtractTextPlugin('dist/styles/main.css', {
+const ExtractSassPluginConfig = new ExtractTextPlugin('dist/styles/main.css', {
   allChunks: true
 });
 
@@ -25,11 +25,17 @@ module.exports = {
       }},
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.scss$/, loaders: ExtractTextPlugin.extract('css-loader!sass-loader') }
+      { test: /\.css$/, include: /node_modules/, use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{ loader: 'css-loader' }],
+        })
+      },
+      { test: /\.scss$/, loaders: ExtractTextPlugin.extract('css-loader!sass-loader') },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   },
   plugins: [
     HtmlWebpackPluginConfig,
-    ExtractTextPluginConfig
+    ExtractSassPluginConfig
   ]
 };
