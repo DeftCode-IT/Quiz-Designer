@@ -1,4 +1,4 @@
-.qd-login-box {
+.qd-register-box {
   padding: 25px;
   display: flex;
   flex-direction: column;
@@ -7,12 +7,12 @@
   box-shadow: 1px 1px 3px $dark;
 }
 
-.qd-login-box__title {
+.qd-register-box__title {
   text-align: center;
   color: $secondary;
 }
 
-.qd-login-box__input {
+.qd-register-box__input {
   margin-bottom: 15px;
   width: 400px;
 
@@ -24,7 +24,7 @@
   }
 }
 
-.qd-login-box__actions {
+.qd-register-box__actions {
   margin: 10px 0;
   display: flex;
   justify-content: center;
@@ -40,6 +40,10 @@
   }
 }
 
+.ui.button.actions__btn a {
+  display: block;
+  color: rgb(255, 255, 255)
+}
 
 .qd-missing-pass-link {
   margin: 15px auto 0 auto;

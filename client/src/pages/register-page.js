@@ -2,7 +2,7 @@ import React from 'react';
 import RegisterBox from './../components/register-box';
 
 const RegisterPage = () => (
-  <div className="qd-login-page">
+  <div className="qd-register-page">
     <RegisterBox />
   </div>
 );

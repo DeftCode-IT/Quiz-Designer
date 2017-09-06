@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const LoginBox = () => (
   <div className="qd-login-box">
@@ -9,12 +10,15 @@ const LoginBox = () => (
     <Input className="qd-login-box__input" label="Hasło" type="password" placeholder="Twoje hasło..." />
 
     <div className="qd-login-box__actions qd-actions">
-      <Button className="actions__btn" animated>
-        <Button.Content visible>Stwórz konto</Button.Content>
-        <Button.Content hidden>
-          <Icon name="user" />
-        </Button.Content>
-      </Button>
+      <Link to={{pathname : '/register'}}>
+        <Button className="actions__btn" animated>
+          <Button.Content visible>Stwórz konto</Button.Content>
+          <Button.Content hidden>
+            <Icon name="user" />
+          </Button.Content>
+        </Button>
+      </Link>
+
       <Button className="actions__btn" animated>
         <Button.Content visible>Zaloguj się</Button.Content>
         <Button.Content hidden>
