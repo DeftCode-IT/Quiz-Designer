@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button } from 'semantic-ui-react';
 
 const Navbar = () => (
   <Menu className="qd-navbar">
@@ -14,10 +14,11 @@ const Navbar = () => (
       </Menu.Item>
 
       <Menu.Item>
-        <Link to={{ pathname: '/login' }}>Zaloguj się</Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to={{ pathname: '/register' }}>Zarejestruj się</Link>
+        <Link to={{ pathname: '/login' }}>
+          <Button className="qd-navbar__login-btn" size="mini">
+            <Button.Content>Logowanie</Button.Content>
+          </Button>
+        </Link>
       </Menu.Item>
     </Menu.Menu>
   </Menu>

@@ -10,7 +10,7 @@ const LoginBox = () => (
     <Input className="qd-login-box__input" label="Hasło" type="password" placeholder="Twoje hasło..." />
 
     <div className="qd-login-box__actions qd-actions">
-      <Link to={{pathname : '/register'}}>
+      <Link to="/register">
         <Button className="actions__btn" animated>
           <Button.Content visible>Stwórz konto</Button.Content>
           <Button.Content hidden>
