@@ -16,6 +16,9 @@ const Navbar = () => (
       <Menu.Item>
         <Link to={{ pathname: '/login' }}>Zaloguj się</Link>
       </Menu.Item>
+      <Menu.Item>
+        <Link to={{ pathname: '/register' }}>Zarejestruj się</Link>
+      </Menu.Item>
     </Menu.Menu>
   </Menu>
 );

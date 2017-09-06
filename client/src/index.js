@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import Navbar from './components/navbar';
 import LoginPage from './pages/login-page';
+import RegisterPage from './pages/register-page';
 import QuizList from './pages/quiz-list';
 import './styles/quiz-designer.scss';
 
@@ -15,6 +16,7 @@ function App() {
         <Navbar />
         <main className="qd-main-container">
           <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
           <Route path="/list" component={QuizList} />
         </main>
       </div>
