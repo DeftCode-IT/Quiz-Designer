@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
 const Navbar = () => (
-  <Menu>
+  <Menu className="qd-navbar">
+    <Menu.Item>
+      <Link to={{ pathname: '/' }}>Quiz designer</Link>
+    </Menu.Item>
+
     <Menu.Menu position="right">
-      <Menu.Item name="signup">
-        <Link to={{ pathname: '/login' }}>Login Box</Link>
+      <Menu.Item>
+        <Link to={{ pathname: '/list' }}>Twoje quizy</Link>
       </Menu.Item>
 
-      <Menu.Item name="help">
-        <Link to={{ pathname: '/list' }}>Quiz List</Link>
+      <Menu.Item>
+        <Link to={{ pathname: '/login' }}>Zaloguj się</Link>
       </Menu.Item>
     </Menu.Menu>
   </Menu>
