@@ -1,4 +1,11 @@
 module.exports = {
+  database: {
+    host: 'mongo14.mydevil.net',
+    post: 27017,
+    dbName: 'mo1368_quiz',
+    dbUserName: 'mo1368_quiz',
+    dbPass: 'Designer2017!',
+  },
   http: {
     port: process.env.PORT || 3000,
   },
