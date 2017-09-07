@@ -1,5 +1,5 @@
 import React from 'react';
-import QuizList from './../components/quiz-list';
+import QuizList from './../components/quiz-list/quiz-list';
 
 const QuizListPage = () => (
   <div>

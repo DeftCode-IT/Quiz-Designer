@@ -10,6 +10,10 @@ const Navbar = () => (
 
     <Menu.Menu position="right">
       <Menu.Item>
+        <Link to={{ pathname: '/create' }}>Stwórz quiz</Link>
+      </Menu.Item>
+
+      <Menu.Item>
         <Link to={{ pathname: '/list' }}>Twoje quizy</Link>
       </Menu.Item>
 
