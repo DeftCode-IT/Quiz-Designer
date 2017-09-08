@@ -1,7 +1,7 @@
 const p = require('bluebird');
 const _ = require('lodash');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const userModel = require('./../../../models').user;
 const { errors } = require('./../../../constants');
 const { generateToken } = require('./../../../middlewares/json-web-token');

@@ -4,7 +4,7 @@
   "description": "quiz & chill",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --fix src/**",
+    "test": "eslint src/**",
     "start": "nodemon ./src/index.js --exec \"npm run test && node\""
   },
   "repository": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/mcdeveloperstudio/quiz_Designer#readme",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
