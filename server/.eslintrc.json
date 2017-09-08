@@ -2,7 +2,8 @@
     "rules": {
         "no-underscore-dangle": ["off"],
         "max-len": ["warn", 200],
-        "indent": ["error", 2]
+        "indent": ["error", 2],
+        "linebreak-style": ["off"]
     },
     "env": {
         "node": true
