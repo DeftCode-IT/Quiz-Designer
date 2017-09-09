@@ -13,7 +13,7 @@ const ExtractTextPluginConfig = new ExtractTextPlugin('dist/styles/main.css', {
 });
 
 module.exports = {
-  entry: './src/auth.js',
+  entry: './src/repository.js',
   output: {
     path: path.resolve('release'),
     filename: 'bundle.js'

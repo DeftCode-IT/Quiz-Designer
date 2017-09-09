@@ -15,7 +15,7 @@ module.exports = {
       expiresIn: 60 * 60 * 24 * 7,
     },
   },
-  logger: {
+  loggerConfig: {
     transports: {
       console: {
         level: 'silly',

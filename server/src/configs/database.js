@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const p = require('bluebird');
 const config = require('../config');
-const logger = require('../common/logger');
+const logger = require('../helpers/logger');
 
 mongoose.Promise = p;
 

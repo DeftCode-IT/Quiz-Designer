@@ -1,5 +1,5 @@
 const winston = require('winston');
-const loggerConfig = require('./../../config').logger;
+const { loggerConfig } = require('../../config');
 
 const logger = new (winston.Logger)({
   exitOnError: false,
