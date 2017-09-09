@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { create } = require('./repository');
+const { create } = require('../../helpers/auth');
 
 const reqHandler = (req, res, next) =>
   create(req.body)

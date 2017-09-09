@@ -26,7 +26,7 @@ module.exports = {
   },
   INVALID_LOGIN: {
     name: 'INVALID_LOGIN',
-    message: 'Invalid email or password',
+    message: 'Missing email or password',
     code: 401,
   },
   INVALID_REGISTER: {
