@@ -18,9 +18,9 @@ const connect = () => {
       const admin = new mongoose.mongo.Admin(mongoose.connection.db);
       admin.buildInfo((err, info) => {
         if (err) {
-          console.err(`Error getting MongoDB info: ${err}`);
+          logger.error(`Error getting MongoDB info: ${err}`);
         } else {
-          console.log(`Connection to MongoDB (version ${info.version}) opened successfully!`);
+          logger.info(`Connection to MongoDB (version ${info.version}) opened successfully!`);
         }
       });
     })

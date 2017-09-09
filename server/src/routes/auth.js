@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const login = require('../middlewares/auth/login');
 const create = require('../middlewares/auth/create');
-const { resolve } = require('../middlewares');
+const { resolve } = require('../helpers');
 
 router
   .post('/login', login, resolve);

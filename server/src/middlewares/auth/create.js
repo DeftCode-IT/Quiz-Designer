@@ -3,7 +3,7 @@ const { create } = require('../../helpers/auth');
 
 const reqHandler = (req, res, next) =>
   create(req.body)
-    .then((user) => {
+    .then(user => {
       _.assign(res, { result: { data: user } });
       next();
     })

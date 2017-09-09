@@ -34,4 +34,9 @@ module.exports = {
     message: 'Account already exists',
     code: 401,
   },
+  USER_EXISTS: {
+    name: 'USER_EXISTS',
+    message: 'The user already exists',
+    code: 401,
+  },
 };

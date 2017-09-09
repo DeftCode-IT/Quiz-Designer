@@ -3,7 +3,7 @@ const { login } = require('../../helpers/auth');
 
 const reqHandler = (req, res, next) =>
   login(req.body)
-    .then((token) => {
+    .then(token => {
       _.assign(res, { result: { data: { token } } });
       next();
     })

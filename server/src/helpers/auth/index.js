@@ -3,7 +3,7 @@ const _ = require('lodash');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
 const userModel = require('../../models').user;
-const { errors } = require('../../constants');
+const { errors } = require('../../configs/index');
 const { generateToken } = require('../../middlewares/json-web-token');
 
 mongoose.Promise = p;
@@ -14,18 +14,23 @@ const removeFragileData = user => _.omit(user.toJSON(), [
   '_id',
 ]);
 
-const login = body =>
-  userModel.findOne({
+const login = body => {
+  if (!body.email || !body.password) {
+    return p.reject(Error(errors.INVALID_LOGIN.name));
+  }
+
+  return userModel.findOne({
     email: body.email,
   })
-    .then((user) => {
-      if(!user || !(bcrypt.compareSync(body.password, user.password))) {
+    .then(user => {
+      if (!(user) || !(bcrypt.compareSync(body.password, user.password))) {
         return p.reject(Error(errors.INVALID_LOGIN.name));
       }
 
       return _.pick(user, ['password']);
     })
     .then(generateToken);
+};
 
 const create = data => {
   const user = data;
@@ -34,8 +39,17 @@ const create = data => {
     return p.reject(Error(errors.INVALID_REGISTER.name));
   }
 
-  user.password = bcrypt.hashSync(user.password);
-  return userModel.create(user)
+  return userModel.findOne({
+    email: user.email,
+  })
+    .then(userFromDb => {
+      if (userFromDb) {
+        return p.reject(Error(errors.USER_EXISTS.name));
+      }
+
+      user.password = bcrypt.hashSync(user.password);
+      return userModel.create(user);
+    })
     .then(removeFragileData);
 };
 

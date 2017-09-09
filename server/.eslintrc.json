@@ -1,6 +1,6 @@
 {
     "rules": {
-        "arrow:parens": ["warn", "as-needed"],
+        "arrow-parens": ["warn", "as-needed"],
         "no-underscore-dangle": ["off"],
         "max-len": ["warn", 200],
         "indent": ["error", 2]

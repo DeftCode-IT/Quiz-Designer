@@ -1,6 +1,6 @@
 const winston = require('./../../common/logger');
 const { errorFormater } = require('./repository');
-const responseErrorFormate = require('./../../middlewares').error;
+const responseErrorFormate = require('../../helpers/index').error;
 
 const errorHandler = (error, req, res, next) => {
   let err = error;
