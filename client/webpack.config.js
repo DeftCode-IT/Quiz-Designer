@@ -4,14 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
 });
 
 module.exports = {
-  entry: './src/repository.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve('release'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
@@ -23,9 +23,9 @@ module.exports = {
       { test: /\.css$/, include: /node_modules/, loaders: ['style-loader', 'css-loader']},
       { test: /\.scss$/, include: /node_modules/, loaders: ['style-loader', 'css-loader', 'sass-loader'], include: [path.resolve(__dirname, './src/styles')] },
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
-    ]
+    ],
   },
   plugins: [
-    HtmlWebpackPluginConfig
-  ]
+    HtmlWebpackPluginConfig,
+  ],
 };
