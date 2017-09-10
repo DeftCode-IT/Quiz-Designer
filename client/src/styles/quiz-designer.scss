@@ -1,3 +1,12 @@
-body {
-  background: rgb(71, 242, 215);
-}
+@import 'common/variables';
+@import 'common/colors';
+@import 'common/general';
+
+@import 'pages/login-page';
+@import 'pages/register-page';
+
+@import 'components/navbar';
+@import 'components/login-box';
+@import 'components/register-box';
+@import 'components/quiz-list';
+

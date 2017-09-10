@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $secondary;
+
+  &:hover {
+    color: $active;
+  }
+}

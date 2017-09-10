@@ -1,0 +1,20 @@
+// overriding Semantic UI styles
+.ui.menu.qd-navbar {
+  margin: 0;
+  height: $navbar-height;
+  background: $primary;
+  border-radius: 0;
+}
+
+.qd-navbar a {
+  color: rgb(255, 255, 255);
+}
+
+.ui.button.qd-navbar__login-btn {
+  background: $active;
+  color: rgb(255, 255, 255);
+
+  &:hover {
+    background: $secondary;
+  }
+}

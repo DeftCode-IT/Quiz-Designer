@@ -1,0 +1,12 @@
+.ReactTable .-pagination .-btn {
+  background: $active;
+  color: rgb(255, 255, 255);
+}
+
+.ReactTable .-pagination .-btn:not([disabled]):hover {
+  background: $secondary;
+}
+
+.ReactTable .rt-thead {
+  overflow-y: scroll;
+}

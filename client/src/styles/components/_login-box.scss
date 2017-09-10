@@ -1,0 +1,47 @@
+.qd-login-box {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px $dark;
+}
+
+.qd-login-box__title {
+  text-align: center;
+  color: $secondary;
+}
+
+.qd-login-box__input {
+  margin-bottom: 15px;
+  width: 400px;
+
+  .label {
+    background: $active;
+    color: rgb(255, 255, 255);
+    min-width: 110px;
+    text-align: center;
+  }
+}
+
+.qd-login-box__actions {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.ui.button.actions__btn {
+  background: $active;
+  color: rgb(255, 255, 255);
+  width: 200px;
+
+  &:hover {
+    background: $secondary;
+  }
+}
+
+
+.qd-missing-pass-link {
+  margin: 15px auto 0 auto;
+  font-size: 0.9rem;
+}
