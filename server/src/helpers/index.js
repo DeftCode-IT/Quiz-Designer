@@ -7,5 +7,5 @@ const resolve = (req, res) =>
 
 
 module.exports = {
-  resolve,
+  resolve
 };

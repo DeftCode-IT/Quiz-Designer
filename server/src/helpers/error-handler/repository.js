@@ -9,7 +9,7 @@ const errorFormater = err => {
       name: err.name || 'Unhandled error',
       message: err.message || 'Sorry! An unknown error occurred',
       code: 500,
-      stack: err.stack,
+      stack: err.stack
     });
   }
 
@@ -18,7 +18,7 @@ const errorFormater = err => {
   const error = _.assign(
     Error(),
     _.pick(errorSupport, ['name', 'message', 'code']),
-    _.pick(err, ['stack']),
+    _.pick(err, ['stack'])
   );
   error.options = _.defaultTo(_.isArray(err.errors) ? err.errors[0] : {}, err.options || {});
 
@@ -26,5 +26,5 @@ const errorFormater = err => {
 };
 
 module.exports = {
-  errorFormater,
+  errorFormater
 };

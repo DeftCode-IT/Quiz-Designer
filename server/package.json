@@ -4,7 +4,7 @@
   "description": "quiz & chill",
   "main": "index.js",
   "scripts": {
-    "test": "eslint src/**",
+    "test": "eslint --fix src/**",
     "start": "nodemon ./src/index.js --exec \"npm run test && node\""
   },
   "repository": {

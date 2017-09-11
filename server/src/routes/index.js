@@ -8,7 +8,7 @@ const router = express.Router();
 router
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
-    extended: true,
+    extended: true
   }))
   .use('/', routesTest)
   .use('/auth', authRoutes);

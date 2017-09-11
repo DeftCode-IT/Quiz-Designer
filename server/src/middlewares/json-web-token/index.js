@@ -11,5 +11,5 @@ const authenticate = (req, res, next) => verifyToken(req.headers.authorization)
 
 module.exports = {
   authenticate,
-  generateToken,
+  generateToken
 };

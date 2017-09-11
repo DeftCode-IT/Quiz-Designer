@@ -5,8 +5,8 @@ const logger = new (winston.Logger)({
   exitOnError: false,
   transports: [
     new (winston.transports.Console)(loggerConfig.transports.console),
-    new (winston.transports.File)(loggerConfig.transports.file),
-  ],
+    new (winston.transports.File)(loggerConfig.transports.file)
+  ]
 });
 
 module.exports = logger;

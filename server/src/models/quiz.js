@@ -10,7 +10,7 @@ const quizSchema = mongoose.Schema({
   editMode: Boolean,
   version: Number,
   createdBy: String,
-  questions: [String],
+  questions: [String]
 });
 
 module.exports = mongoose.model('quiz', quizSchema);

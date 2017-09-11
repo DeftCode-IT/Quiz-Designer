@@ -11,7 +11,7 @@ mongoose.Promise = p;
 const removeFragileData = user => _.omit(user.toJSON(), [
   'password',
   '__v',
-  '_id',
+  '_id'
 ]);
 
 const login = body => {
@@ -20,7 +20,7 @@ const login = body => {
   }
 
   return userModel.findOne({
-    email: body.email,
+    email: body.email
   })
     .then(user => {
       if (!(user) || !(bcrypt.compareSync(body.password, user.password))) {
@@ -40,7 +40,7 @@ const create = data => {
   }
 
   return userModel.findOne({
-    email: user.email,
+    email: user.email
   })
     .then(userFromDb => {
       if (userFromDb) {
@@ -55,5 +55,5 @@ const create = data => {
 
 module.exports = {
   login,
-  create,
+  create
 };
