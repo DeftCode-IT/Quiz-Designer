@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix src/**",
-    "test": "mocha",
+    "test": "nyc mocha",
     "start": "nodemon ./src/index.js --exec \"npm run lint && node\""
   },
   "repository": {
@@ -43,6 +43,7 @@
     "eslint-plugin-import": "^2.7.0",
     "mocha": "^3.5.2",
     "nodemon": "^1.11.0",
+    "nyc": "^11.2.1",
     "supertest": "^3.0.0"
   }
 }
