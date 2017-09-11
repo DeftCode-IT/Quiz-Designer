@@ -1,7 +1,5 @@
 .idea
 .vscode
-/server/.nyc_output
-/server/coverage
 /server/node_modules
 /server/quiz-app.log
 /server/package-lock.json
