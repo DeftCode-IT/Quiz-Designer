@@ -7,7 +7,7 @@ chai.should();
 
 describe('Authorization and authentication', () => {
   describe('Testing /login endpoint', () => {
-    it('should login and get token in response', (done) => {
+    it('should login and get token in response', done => {
       request(app)
       .post('/api/auth/login')
       .send({
@@ -23,7 +23,7 @@ describe('Authorization and authentication', () => {
       .end(done);
     });
 
-    it('should send info about wrong credentials', (done) => {
+    it('should send info about wrong credentials', done => {
       request(app)
       .post('/api/auth/login')
       .send({
@@ -39,7 +39,7 @@ describe('Authorization and authentication', () => {
       .end(done);
     });
 
-    it('should send info about missing credentials', (done) => {
+    it('should send info about missing credentials', done => {
       request(app)
       .post('/api/auth/login')
       .send({
