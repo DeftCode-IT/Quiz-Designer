@@ -14,7 +14,7 @@ const data = [
     pointsToSuccess: 5,
     editMode: true,
     version: 1,
-    createdBy: 'Rowling',
+    createdBy: 'Rowling'
   },
   {
     title: 'Javascript ES6 quiz',
@@ -24,8 +24,8 @@ const data = [
     pointsToSuccess: 10,
     editMode: true,
     version: 1,
-    createdBy: 'JsNinja',
-  },
+    createdBy: 'JsNinja'
+  }
 ];
 
 const questionExample = {
@@ -34,9 +34,9 @@ const questionExample = {
   answers: [
     'a',
     'b',
-    'c',
+    'c'
   ],
-  correctAnswers: [1],
+  correctAnswers: [1]
 };
 
 const seedDB = () => quizModel.remove({})

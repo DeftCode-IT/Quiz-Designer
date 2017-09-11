@@ -8,10 +8,10 @@ const userSchema = mongoose.Schema({
     validate: {
       validator: validator.isEmail,
       message: '{VALUE} is not a valid email',
-      isAsync: false,
-    },
+      isAsync: false
+    }
   },
-  password: String,
+  password: String
 });
 
 module.exports = mongoose.model('user', userSchema);

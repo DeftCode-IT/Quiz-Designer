@@ -7,7 +7,7 @@ mongoose.Promise = p;
 
 const options = {
   promiseLibrary: p,
-  useMongoClient: true,
+  useMongoClient: true
 };
 
 const connect = () => {

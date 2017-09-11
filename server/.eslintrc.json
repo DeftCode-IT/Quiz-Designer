@@ -3,7 +3,14 @@
         "arrow-parens": ["warn", "as-needed"],
         "no-underscore-dangle": ["off"],
         "max-len": ["warn", 200],
-        "indent": ["error", 2]
+        "indent": ["error", 2],
+        "comma-dangle": ["error", {
+            "arrays": "never",
+            "objects": "never",
+            "imports": "never",
+            "exports": "never",
+            "functions": "ignore"
+        }]
     },
     "env": {
         "node": true

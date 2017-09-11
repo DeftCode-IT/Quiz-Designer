@@ -3,7 +3,7 @@ const _ = require('lodash');
 const errorHandler = err => {
   const response = {
     name: err.name,
-    message: err.message,
+    message: err.message
   };
 
   if (err.options) {
