@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix src/**",
-    "test": "mocha",
+    "test": "./node_modules/mocha/bin/mocha",
     "start": "nodemon ./src/index.js --exec \"npm run lint && node\""
   },
   "repository": {
