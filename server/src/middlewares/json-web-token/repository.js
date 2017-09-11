@@ -9,7 +9,6 @@ const jwtConfig = config.jwt;
 const jwtVerify = p.promisify(jwt.verify);
 
 const verifyToken = token => {
-  console.log(token);
   if (!token) {
     return p.reject(Error(errors.MISSING_AUTHORIZATION_HEADER.name));
   }
