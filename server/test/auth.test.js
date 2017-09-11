@@ -35,7 +35,24 @@ describe('Authorization and authentication', () => {
         password: 'wrongpassword'
       })
       .expect(res => {
+        res.body.name.should.be.equal('INVALID_CREDENTIALS');
+        res.body.message.should.be.equal('Invalid email or/and password');
+        res.body.code.should.be.equal(401);
+      })
+      .expect(401)
+      .end(done);
+    });
 
+    it('should get info about missing credentials', (done) => {
+      request(app)
+      .post('/api/auth/login')
+      .send({
+        email: 'wrongmail@example.com'
+      })
+      .expect(res => {
+        res.body.name.should.be.equal('MISSING_CREDENTIALS');
+        res.body.message.should.be.equal('Missing email or/and password');
+        res.body.code.should.be.equal(401);
       })
       .expect(401)
       .end(done);

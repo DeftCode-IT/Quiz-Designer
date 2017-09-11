@@ -16,7 +16,7 @@ const removeFragileData = user => _.omit(user.toJSON(), [
 
 const login = body => {
   if (!body.email || !body.password) {
-    return p.reject(Error(errors.INVALID_LOGIN.name));
+    return p.reject(Error(errors.MISSING_CREDENTIALS.name));
   }
 
   return userModel.findOne({
@@ -24,7 +24,7 @@ const login = body => {
   })
     .then(user => {
       if (!(user) || !(bcrypt.compareSync(body.password, user.password))) {
-        return p.reject(Error(errors.INVALID_LOGIN.name));
+        return p.reject(Error(errors.INVALID_CREDENTIALS.name));
       }
 
       return _.pick(user, ['password']);

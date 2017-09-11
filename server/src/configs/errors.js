@@ -24,10 +24,15 @@ module.exports = {
     message: 'Invalid token or expired',
     code: 500
   },
-  INVALID_LOGIN: {
-    name: 'INVALID_LOGIN',
-    message: 'Missing email or password',
-    code: 500
+  INVALID_CREDENTIALS: {
+    name: 'INVALID_CREDENTIALS',
+    message: 'Invalid email or/and password',
+    code: 401
+  },
+  MISSING_CREDENTIALS: {
+    name: 'MISSING_CREDENTIALS',
+    message: 'Missing email or/and password',
+    code: 401
   },
   INVALID_REGISTER: {
     name: 'INVALID_REGISTER',
