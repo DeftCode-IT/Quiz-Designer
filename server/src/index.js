@@ -11,8 +11,8 @@ const app = express();
 
 app
   .use(morgan('dev', { stream: { write: message => logger.info(message) } }))
-  .use('/api', routes)
   .use(allowCrossDomain)
+  .use('/api', routes)
   .use(errorHandler);
 
 app.listen(config.http.port, () => logger.info(`Server is working on port: ${config.http.port}`));
