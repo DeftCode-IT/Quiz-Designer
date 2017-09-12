@@ -2,32 +2,50 @@ import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+class LoginBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      repeatPassword: '',
+    };
 
-const LoginBox = () => (
-  <div className="qd-register-box">
-    <h1 className="qd-register-box__title">Zarejestruj się</h1>
+    this.onChange = this.onChange.bind(this);
+  }
 
-    <Input className="qd-register-box__input" label="E-mail" placeholder="Twój email..." />
-    <Input className="qd-register-box__input" label="Hasło" type="password" placeholder="Twoje hasło..." />
-    <Input className="qd-register-box__input" label="Powtórz hasło" type="password" placeholder="Powtórz hasło..." />
+  onChange(e, inputName) {
+    const value = e.target.value;
+    this.setState({ [inputName]: value });
+  }
 
-    <div className="qd-register-box__actions qd-actions">
-      <Link to="/login">
-        <Button className="actions__btn" animated>
-          <Button.Content visible>Zaloguj się</Button.Content>
-          <Button.Content hidden>
-            <Icon name="right arrow" />
-          </Button.Content>
-        </Button>
-      </Link>
-      <Button className="actions__btn" animated>
-        <Button.Content visible>Stwórz konto</Button.Content>
-        <Button.Content hidden>
-          <Icon name="user" />
-        </Button.Content>
-      </Button>
-    </div>
-  </div>
-);
+  render() {
+    return (
+      <div className="qd-register-box">
+        <h1 className="qd-register-box__title">Zarejestruj się</h1>
+        <Input className="qd-register-box__input" label="E-mail" value={this.state.email} onChange={e => this.onChange(e, 'email')} placeholder="Twój email..." />
+        <Input className="qd-register-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChange(e, 'password')} type="password" placeholder="Twoje hasło..." />
+        <Input className="qd-register-box__input" label="Powtórz hasło" value={this.state.repeatPassword} onChange={e => this.onChange(e, 'repeatPassword')} type="password" placeholder="Powtórz hasło..." />
+        <div className="qd-register-box__actions qd-actions">
+          <Link to="/login">
+            <Button className="actions__btn" animated>
+              <Button.Content visible>Zaloguj się</Button.Content>
+              <Button.Content hidden>
+                <Icon name="right arrow" />
+              </Button.Content>
+            </Button>
+          </Link>
+          <Button className="actions__btn" animated>
+            <Button.Content visible>Stwórz konto</Button.Content>
+            <Button.Content hidden>
+              <Icon name="user" />
+            </Button.Content>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+}
+
 
 export default LoginBox;

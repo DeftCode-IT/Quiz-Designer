@@ -1,0 +1,253 @@
+2017-09-12T17:40:42.081Z - error: (500) INVALID_LOGIN : Missing email or password 
+ Error: INVALID_LOGIN
+    at login (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:19:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/login.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:41:37.007Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:41:58.193Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:41:59.886Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:42:00.457Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:42:00.780Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:42:01.052Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:42:01.359Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T17:42:01.617Z - error: (500) INVALID_REGISTER : Account already exists 
+ Error: INVALID_REGISTER
+    at create (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:39:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/create.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T18:02:50.867Z - error: (500) INVALID_LOGIN : Missing email or password 
+ Error: INVALID_LOGIN
+    at login (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:19:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/login.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
+2017-09-12T18:03:04.871Z - error: (500) INVALID_LOGIN : Missing email or password 
+ Error: INVALID_LOGIN
+    at login (/Users/poulch/Projekty/Quiz-Designer/server/src/helpers/auth/index.js:19:21)
+    at reqHandler (/Users/poulch/Projekty/Quiz-Designer/server/src/middlewares/auth/login.js:5:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Function.handle (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:174:3)
+    at router (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:317:13)
+    at /Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:335:12)
+    at Immediate.next (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:275:10)
+    at Immediate.<anonymous> (/Users/poulch/Projekty/Quiz-Designer/server/node_modules/express/lib/router/index.js:635:15)
+    at runCallback (timers.js:802:20)
+    at tryOnImmediate (timers.js:762:5)
+    at processImmediate [as _immediateCallback] (timers.js:733:5) 
+ {}
