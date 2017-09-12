@@ -7,11 +7,12 @@ class LoginBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      login: '',
+      email: '',
       password: '',
     };
 
     this.onChange = this.onchangeInput.bind(this);
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   onchangeInput(e, inputName) {
@@ -20,9 +21,9 @@ class LoginBox extends React.Component {
   }
 
   onSubmitForm() {
-    const { login, password } = this.state;
+    const { email, password } = this.state;
     axios.post('http://localhost:3000/api/auth/login', {
-      email: login,
+      email,
       password,
     })
       .then(response => console.log(response))
@@ -33,7 +34,7 @@ class LoginBox extends React.Component {
     return (
       <div className="qd-login-box">
         <h1 className="qd-login-box__title">Witaj!</h1>
-        <Input className="qd-login-box__input" label="Login" value={this.state.login} onChange={e => this.onchangeInput(e, 'login')} placeholder="Twój login..." />
+        <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onchangeInput(e, 'email')} placeholder="Twój login..." />
         <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onchangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
         <div className="qd-login-box__actions qd-actions">
           <Link to="/register">

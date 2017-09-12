@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -12,11 +13,22 @@ class LoginBox extends React.Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   onChange(e, inputName) {
     const value = e.target.value;
     this.setState({ [inputName]: value });
+  }
+
+  onSubmitForm() {
+    const { email, password } = this.state;
+    axios.post('http://localhost:3000/api/auth/register', {
+      email,
+      password,
+    })
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   }
 
   render() {
@@ -35,7 +47,7 @@ class LoginBox extends React.Component {
               </Button.Content>
             </Button>
           </Link>
-          <Button className="actions__btn" animated>
+          <Button className="actions__btn" onClick={() => this.onSubmitForm()} animated>
             <Button.Content visible>Stwórz konto</Button.Content>
             <Button.Content hidden>
               <Icon name="user" />
