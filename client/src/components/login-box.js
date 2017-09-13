@@ -20,7 +20,8 @@ class LoginBox extends React.Component {
 
   onSubmitForm() {
     const { email, password } = this.state;
-    loginUser(email, password).then(() => {
+    loginUser(email, password).then((resolve) => {
+      localStorage.setItem('token', resolve.data.data.token);
       this.props.history.push('/list');
     });
     // .catch(error => console.log(error)); // uncomment only for debugging
