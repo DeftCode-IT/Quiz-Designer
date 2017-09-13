@@ -1,6 +1,7 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { loginUser } from '../utils/auth';
 
 class LoginBox extends React.Component {
@@ -19,8 +20,9 @@ class LoginBox extends React.Component {
 
   onSubmitForm() {
     const { email, password } = this.state;
-    loginUser(email, password)
-      .then(() => <Redirect to="/list" />);
+    loginUser(email, password).then(() => {
+      this.props.history.push('/list');
+    });
     // .catch(error => console.log(error)); // uncomment only for debugging
   }
 
@@ -52,4 +54,8 @@ class LoginBox extends React.Component {
   }
 }
 
-export default LoginBox;
+LoginBox.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
+
+export default withRouter(LoginBox);
