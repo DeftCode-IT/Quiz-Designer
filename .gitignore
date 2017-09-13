@@ -2,6 +2,7 @@
 .vscode
 /server/node_modules
 /server/quiz-app.log
+/server/src/quiz-app.log
 /server/package-lock.json
 /client/node_modules
 /client/package-lock.json
