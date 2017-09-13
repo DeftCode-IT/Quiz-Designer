@@ -3,4 +3,4 @@ node_js:
   - "8"
 env:
   - PROJECT_DIR=server
-script: cd $TEST_DIR && npm install && npm test
+script: cd $PROJECT_DIR && npm install && npm test
