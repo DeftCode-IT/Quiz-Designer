@@ -9,14 +9,7 @@ import LoginPage from './pages/login-page';
 import RegisterPage from './pages/register-page';
 import QuizListPage from './pages/quiz-list-page';
 import './styles/quiz-designer.scss';
-
-
-const checkAuth = () => {
-  const token = localStorage.getItem('token');
-  if (!token) return false;
-  return true;
-};
-
+import { checkAuth } from './utils/auth';
 
 function App() {
   return (

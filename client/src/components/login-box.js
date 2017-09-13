@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
+import { loginUser } from '../utils/auth';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -10,23 +10,17 @@ class LoginBox extends React.Component {
       email: '',
       password: '',
     };
-
-    this.onChange = this.onchangeInput.bind(this);
-    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
-  onchangeInput(e, inputName) {
+  onChangeInput(e, inputName) {
     const value = e.target.value;
     this.setState({ [inputName]: value });
   }
 
   onSubmitForm() {
     const { email, password } = this.state;
-    axios.post('http://localhost:3000/api/auth/login', {
-      email,
-      password,
-    })
-      .then(response => console.log(response))
+    loginUser(email, password)
+      .then(() => <Redirect to="/list" />)
       .catch(error => console.log(error));
   }
 
@@ -34,8 +28,8 @@ class LoginBox extends React.Component {
     return (
       <div className="qd-login-box">
         <h1 className="qd-login-box__title">Witaj!</h1>
-        <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onchangeInput(e, 'email')} placeholder="Twój login..." />
-        <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onchangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
+        <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onChangeInput(e, 'email')} placeholder="Twój login..." />
+        <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
         <div className="qd-login-box__actions qd-actions">
           <Link to="/register">
             <Button className="actions__btn" animated>
