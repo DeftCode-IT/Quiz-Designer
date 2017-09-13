@@ -20,8 +20,8 @@ class LoginBox extends React.Component {
   onSubmitForm() {
     const { email, password } = this.state;
     loginUser(email, password)
-      .then(() => <Redirect to="/list" />)
-      .catch(error => console.log(error));
+      .then(() => <Redirect to="/list" />);
+    // .catch(error => console.log(error)); // uncomment only for debugging
   }
 
   render() {
