@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "node ./node_modules/eslint/bin/eslint src --fix",
     "test": "node ./node_modules/mocha/bin/mocha",
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon ./src/index.js --watch ./src --delay 1"
   },
   "repository": {
     "type": "git",
@@ -47,8 +47,7 @@
   },
   "nodemonConfig": {
     "events": {
-      "restart": "npm run lint",
-      "start": "npm run lint"
+      "start": "node ./node_modules/eslint/bin/eslint src --fix"
     }
   }
 }
