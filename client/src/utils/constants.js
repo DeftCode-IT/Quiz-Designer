@@ -1,5 +1,5 @@
 
-const config = {
+const constants = {
   baseApiUrl: 'http://localhost:3000/api/',
   endpoints: {
     register: 'auth/register',
@@ -7,4 +7,4 @@ const config = {
   },
 };
 
-export default config;
+export default constants;

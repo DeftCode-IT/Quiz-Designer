@@ -1,10 +1,11 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { registerUser } from '../utils/auth';
 
 
-class LoginBox extends React.Component {
+class RegisterBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +24,9 @@ class LoginBox extends React.Component {
     const { email, password, repeatedPassword } = this.state;
     if (password === repeatedPassword) {
       registerUser(email, password)
-        .then(() => <Redirect to="/login" />);
+        .then(() => {
+          this.props.history.push('/login');
+        });
       // .catch(error => console.log(error)); // uncomment only for debugging
     }
   }
@@ -64,4 +67,8 @@ class LoginBox extends React.Component {
 }
 
 
-export default LoginBox;
+RegisterBox.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+};
+
+export default withRouter(RegisterBox);
