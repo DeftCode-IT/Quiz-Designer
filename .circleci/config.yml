@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build_and_test_server:
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - build
+      - run: cd server && npm install
+
+      - test
+      - run: cd server && npm test
