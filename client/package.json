@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2",
+    "react-router-prop-types": "0.0.1",
     "react-table": "^6.5.3",
     "semantic-ui-css": "^2.2.12",
     "semantic-ui-react": "^0.72.0"
