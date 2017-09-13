@@ -4,8 +4,6 @@ const { errorFormater } = require('../../helpers/error-handler/repository');
 const errorHandler = (error, req, res, next) => {
   let err = error;
 
-  console.log('Error: ', error);
-
   if (!err) {
     return next();
   }
