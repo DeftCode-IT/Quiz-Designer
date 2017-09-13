@@ -4,7 +4,7 @@
   "description": "quiz & chill",
   "main": "index.js",
   "scripts": {
-    "lint": "node ./node_modules/eslint/bin/eslint src",
+    "lint": "node ./node_modules/eslint/bin/eslint src --fix",
     "test": "node ./node_modules/mocha/bin/mocha",
     "start": "nodemon ./src/index.js"
   },
