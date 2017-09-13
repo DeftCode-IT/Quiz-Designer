@@ -16,3 +16,5 @@ app
   .use(errorHandler);
 
 app.listen(config.http.port, () => logger.info(`Server is working on port: ${config.http.port}`));
+
+module.exports = app;

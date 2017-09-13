@@ -2,16 +2,14 @@ const winston = require('../../helpers/logger');
 const { errorFormater } = require('../../helpers/error-handler/repository');
 
 const errorHandler = (error, req, res, next) => {
-  let err = error;
-
-  if (!err) {
+  if (!error) {
     return next();
   }
 
-  err = errorFormater(err);
+  const formatedError = errorFormater(error);
 
-  winston.error(`(${err.code}) ${err.name} : ${err.message} \n ${err.stack} \n ${JSON.stringify(err.options)}`);
-  return res.status(err.code).json(errorFormater(err));
+  winston.error(`(${formatedError.code}) ${formatedError.name} : ${formatedError.message} \n ${formatedError.stack} \n ${JSON.stringify(formatedError.options)}`);
+  return res.status(formatedError.code).json(formatedError);
 };
 
 module.exports = errorHandler;
