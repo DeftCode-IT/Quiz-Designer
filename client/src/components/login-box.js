@@ -18,6 +18,13 @@ class LoginBox extends React.Component {
     this.setState({ [inputName]: value });
   }
 
+  onKeyUp(e) {
+    if (e.keyCode === 13) {
+      this.onSubmitForm();
+    }
+  }
+
+
   onSubmitForm() {
     const { email, password } = this.state;
     loginUser(email, password).then((resolve) => {
@@ -31,8 +38,8 @@ class LoginBox extends React.Component {
     return (
       <div className="qd-login-box">
         <h1 className="qd-login-box__title">Witaj!</h1>
-        <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onChangeInput(e, 'email')} placeholder="Twój login..." />
-        <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
+        <Input className="qd-login-box__input" label="Login" value={this.state.email} onKeyUp={e => this.onKeyUp(e)} onChange={e => this.onChangeInput(e, 'email')} placeholder="Twój login..." />
+        <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onKeyUp={e => this.onKeyUp(e)} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
         <div className="qd-login-box__actions qd-actions">
           <Link to="/register">
             <Button className="actions__btn" animated>
