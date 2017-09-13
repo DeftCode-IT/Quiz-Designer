@@ -11,7 +11,7 @@ describe('Authorization and authentication', () => {
       request(app)
       .post('/api/auth/login')
       .send({
-        email: 'example@examddple.com',
+        email: 'example@example.com',
         password: 'examplepassword'
       })
       .expect(res => {
