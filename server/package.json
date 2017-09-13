@@ -4,8 +4,9 @@
   "description": "quiz & chill",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --fix src/**",
-    "start": "nodemon ./src/index.js --exec \"npm run test && node\""
+    "lint": "node ./node_modules/eslint/bin/eslint --fix src/**",
+    "test": "node ./node_modules/mocha/bin/mocha",
+    "start": "nodemon ./src/index.js --exec \"npm run lint && node\""
   },
   "repository": {
     "type": "git",
@@ -36,9 +37,12 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-plugin-import": "^2.7.0",
-    "nodemon": "^1.11.0"
+    "mocha": "^3.5.2",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
   }
 }
