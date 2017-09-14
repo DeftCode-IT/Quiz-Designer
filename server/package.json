@@ -1,29 +1,12 @@
 {
-  "name": "quiz_designer",
-  "version": "1.0.0",
-  "description": "quiz & chill",
-  "main": "index.js",
+  "name": "quiz_designer_server",
+  "version": "0.0.1",
+  "main": "src/index.js",
   "scripts": {
     "lint": "node ./node_modules/eslint/bin/eslint src --fix",
     "test": "node ./node_modules/mocha/bin/mocha test/setup.js test/**/*.test.js",
     "start": "nodemon ./src/index.js --watch ./src --delay 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mcdeveloperstudio/quiz_Designer.git"
-  },
-  "keywords": [
-    "quiz",
-    "designer",
-    "node",
-    "react"
-  ],
-  "author": "mcdeveloper, deftcode",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mcdeveloperstudio/quiz_Designer/issues"
-  },
-  "homepage": "https://github.com/mcdeveloperstudio/quiz_Designer#readme",
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.0",
