@@ -10,8 +10,16 @@ const options = {
   useMongoClient: true
 };
 
+let dbConfig;
+
+if (process.env.NODE_ENV !== 'test') {
+  dbConfig = config.database.prod;
+} else {
+  dbConfig = config.database.test;
+}
+
 const connect = () => {
-  const uri = `mongodb://${config.database.dbUserName}:${config.database.dbPass}@${config.database.host}:${config.database.port}/${config.database.dbName}`;
+  const uri = `mongodb://${dbConfig.dbUserName}:${dbConfig.dbPass}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`;
 
   return mongoose.connect(uri, options)
     .then(() => {

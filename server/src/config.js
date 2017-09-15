@@ -1,10 +1,19 @@
 module.exports = {
   database: {
-    host: 'mongo14.mydevil.net',
-    port: 27017,
-    dbName: 'mo1368_quiz',
-    dbUserName: 'mo1368_quiz',
-    dbPass: 'Designer2017!'
+    prod: {
+      host: 'mongo12.mydevil.net',
+      port: 27017,
+      dbName: 'mo1021_qd_prod',
+      dbUserName: 'mo1021_qd_prod',
+      dbPass: 'juwWCIKmmmZ7qBwPyyLk'
+    },
+    test: {
+      host: 'mongo12.mydevil.net',
+      port: 27017,
+      dbName: 'mo1021_qd_test',
+      dbUserName: 'mo1021_qd_test',
+      dbPass: '8IaZxu6k2D0vV1KoBM1W'
+    }
   },
   http: {
     port: process.env.PORT || 3000
