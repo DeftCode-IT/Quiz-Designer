@@ -40,6 +40,12 @@
   }
 }
 
+.ui.input {
+  &.qd-login-box__input {
+    display: flex;
+  }
+}
+
 
 .qd-missing-pass-link {
   margin: 15px auto 0 auto;
