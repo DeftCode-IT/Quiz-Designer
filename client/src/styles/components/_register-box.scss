@@ -15,6 +15,7 @@
 .qd-register-box__input {
   margin-bottom: 15px;
   width: 400px;
+  display: flex;
 
   .label {
     background: $active;
@@ -43,4 +44,10 @@
 .ui.button.actions__btn a {
   display: block;
   color: rgb(255, 255, 255)
+}
+
+.ui.input {
+  &.qd-register-box__input {
+    display: flex;
+  }
 }
