@@ -2,6 +2,7 @@ import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import PropTypes from 'prop-types';
 import { loginUser } from '../utils/auth';
 
 class LoginBox extends React.Component {
@@ -23,7 +24,7 @@ class LoginBox extends React.Component {
     event.preventDefault();
     const { email, password } = this.state;
     loginUser(email, password).then((resolve) => {
-      localStorage.setItem('token', resolve.data.data.token);
+      this.props.login(resolve.data.data.token);
       this.props.history.push('/list');
     });
     // .catch(error => console.log(error)); // uncomment only for debugging
@@ -61,6 +62,11 @@ class LoginBox extends React.Component {
 
 LoginBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  login: PropTypes.func,
+};
+
+LoginBox.defaultProps = {
+  login: () => {},
 };
 
 export default withRouter(LoginBox);

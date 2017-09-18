@@ -9,30 +9,52 @@ import LoginPage from './pages/login-page';
 import RegisterPage from './pages/register-page';
 import QuizListPage from './pages/quiz-list-page';
 import './styles/quiz-designer.scss';
-import { checkAuth } from './utils/auth';
 
-function App() {
-  return (
-    <HashRouter>
-      <div>
-        <Navbar />
-        <main className="qd-main-container">
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/list" component={QuizListPage} />
-          <Route render={() => {
-            if (checkAuth()) {
-              return <Redirect to="/list" />;
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLogged: false,
+    };
+
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
+
+  login(token) {
+    this.setState({ isLogged: true });
+    localStorage.setItem('token', token);
+  }
+
+  logout() {
+    this.setState({ isLogged: false });
+    localStorage.removeItem('token');
+  }
+
+  render() {
+    return (
+      <HashRouter>
+        <div>
+          <Navbar isLogged={this.state.isLogged} logout={this.logout} />
+          <main className="qd-main-container">
+            <Route path="/login" render={() => <LoginPage login={this.login} />} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/list" component={QuizListPage} />
+            <Route render={() => {
+              if (this.state.isLogged) {
+                return <Redirect to="/list" />;
+              }
+
+              return <Redirect to="/login" />;
             }
-
-            return <Redirect to="/login" />;
-          }
-          }
-          />
-        </main>
-      </div>
-    </HashRouter>
-  );
+            }
+            />
+          </main>
+        </div>
+      </HashRouter>
+    );
+  }
 }
 
 ReactDOM.render(<App />, document.querySelector('.app'));
