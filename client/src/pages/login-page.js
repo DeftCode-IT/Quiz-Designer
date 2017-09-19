@@ -1,19 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import LoginBox from './../components/login-box';
+import LoginBox from '../components/login-box';
 
-const LoginPage = ({ login }) => (
+const LoginPage = () => (
   <div className="qd-login-page">
-    <LoginBox login={login} />
+    <LoginBox />
   </div>
 );
 
-LoginPage.propTypes = {
-  login: PropTypes.func,
-};
-
-LoginPage.defaultProps = {
-  login: () => {},
-};
 
 export default LoginPage;

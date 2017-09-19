@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link, withRouter } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
+import * as userActions from '../actions/user';
 import { loginUser } from '../utils/auth';
 
 class LoginBox extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: '',
       password: '',
@@ -25,7 +28,6 @@ class LoginBox extends React.Component {
     const { email, password } = this.state;
     loginUser(email, password).then((resolve) => {
       this.props.login(resolve.data.data.token);
-      this.props.history.push('/list');
     });
     // .catch(error => console.log(error)); // uncomment only for debugging
   }
@@ -61,7 +63,6 @@ class LoginBox extends React.Component {
 }
 
 LoginBox.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
   login: PropTypes.func,
 };
 
@@ -69,4 +70,8 @@ LoginBox.defaultProps = {
   login: () => {},
 };
 
-export default withRouter(LoginBox);
+const mapDispatchToProps = dispatch => ({
+  login: token => dispatch(userActions.login(token)),
+});
+
+export default connect(null, mapDispatchToProps)(LoginBox);
