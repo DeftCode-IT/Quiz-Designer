@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-import * as userActions from '../actions/user';
-import { loginUser } from '../utils/auth';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import { loginUser } from '../actions/user';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -15,6 +14,8 @@ class LoginBox extends React.Component {
       email: '',
       password: '',
     };
+
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   onChangeInput(e, inputName) {
@@ -26,8 +27,8 @@ class LoginBox extends React.Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    loginUser(email, password).then((resolve) => {
-      this.props.login(resolve.data.data.token);
+    this.props.onLogin(email, password).then(() => {
+      this.props.history.push('/list');
     });
     // .catch(error => console.log(error)); // uncomment only for debugging
   }
@@ -63,15 +64,16 @@ class LoginBox extends React.Component {
 }
 
 LoginBox.propTypes = {
-  login: PropTypes.func,
+  history: ReactRouterPropTypes.history.isRequired,
+  onLogin: PropTypes.func,
 };
 
 LoginBox.defaultProps = {
-  login: () => {},
+  onLogin: () => {},
 };
 
 const mapDispatchToProps = dispatch => ({
-  login: token => dispatch(userActions.login(token)),
+  onLogin: (email, password) => dispatch(loginUser(email, password)),
 });
 
-export default connect(null, mapDispatchToProps)(LoginBox);
+export default connect(null, mapDispatchToProps)(withRouter(LoginBox));

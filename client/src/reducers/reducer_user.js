@@ -1,19 +1,19 @@
-import constants from '../utils/constants';
+import { LOGIN_USER, LOGOUT_USER, REGISTER_USER } from '../actions/user';
 import { checkAuth } from '../utils/auth';
 
 
 const initState = {
-  isLogged: checkAuth(),
+  isLoggedIn: checkAuth(),
 };
 
 export default function (state = initState, action) {
   switch (action.type) {
-  case constants.USER_LOGIN:
-    localStorage.setItem('token', action.payload.token);
-    return Object.assign(state, { isLogged: true });
-  case constants.USER_LOGOUT:
-    localStorage.removeItem('token');
-    return Object.assign(state, { isLogged: false });
+  case LOGIN_USER:
+    return { ...state, isLoggedIn: action.isLoggedIn };
+  case LOGOUT_USER:
+    return { ...state, isLoggedIn: action.isLoggedIn };
+  case REGISTER_USER:
+    return { ...state };
   default:
     return state;
   }

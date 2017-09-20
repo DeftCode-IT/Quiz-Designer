@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import 'semantic-ui-css/semantic.min.css';
 import 'react-table/react-table.css';
 
@@ -14,7 +15,7 @@ import rootReducer from './reducers/';
 import './styles/quiz-designer.scss';
 
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const App = () => (
   <HashRouter>
