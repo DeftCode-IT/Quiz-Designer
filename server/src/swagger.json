@@ -1,0 +1,380 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Quiz Designer API",
+    "description": "Documentation for Quiz Designer API.",
+    "contact": {
+      "name": "Quiz Designer Team"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "http://localhost:3000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "description": "Creates new user for quiz designer. Duplicates are not allowed.",
+        "operationId": "addUser",
+        "tags": [
+          "Auth"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of newly created user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of newly created user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "register response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "Login user and get access token in return.",
+        "operationId": "loginUser",
+        "tags": [
+          "Auth"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/quizes/": {
+      "get": {
+        "description": "Login user and get access token in return.",
+        "operationId": "loginUser",
+        "tags": [
+          "Quizes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Login user and get access token in return.",
+        "operationId": "loginUser",
+        "tags": [
+          "Quizes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/quizes/{quizID}": {
+      "get": {
+        "description": "Login user and get access token in return.",
+        "operationId": "loginUser",
+        "tags": [
+          "Quizes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "description": "Login user and get access token in return.",
+        "operationId": "loginUser",
+        "tags": [
+          "Quizes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Login user and get access token in return.",
+        "operationId": "loginUser",
+        "tags": [
+          "Quizes"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "user response",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "name",
+        "code",
+        "message"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
