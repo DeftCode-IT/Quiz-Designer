@@ -4,7 +4,6 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REGISTER_USER = 'REGISTER_USER';
 
-
 export function loginUser(email, password) {
   return dispatch => login(email, password).then(res => {
     const token = res.data.data.token;

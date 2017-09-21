@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/user.actions';
 
-
 class RegisterBox extends React.Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,6 @@ class RegisterBox extends React.Component {
     const value = e.target.value;
     this.setState({ [inputName]: value });
   }
-
 
   onSubmitForm(event) {
     event.preventDefault();
@@ -73,12 +71,10 @@ class RegisterBox extends React.Component {
   }
 }
 
-
 RegisterBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   register: PropTypes.func.isRequired,
 };
-
 
 const mapDispatchToProps = dispatch => ({
   register: (email, password) => dispatch(registerUser(email, password)),

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
@@ -13,9 +13,7 @@ import RegisterPage from './pages/register-page.component';
 import QuizListPage from './pages/quiz-list-page.component';
 import rootReducer from './reducers/';
 import PrivateRoute from './components/private-route.component';
-import { isAuthenticated } from './utils/auth';
 import './styles/quiz-designer.scss';
-
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(
@@ -29,17 +27,7 @@ const App = () => (
       <main className="qd-main-container">
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/list" component={QuizListPage} />
         <PrivateRoute path="/list" component={QuizListPage} />
-        <Route render={() => {
-          if (isAuthenticated()) {
-            return <Redirect to="/list" />;
-          }
-
-          return <Redirect to="/login" />;
-        }
-        }
-        />
       </main>
     </div>
   </HashRouter>

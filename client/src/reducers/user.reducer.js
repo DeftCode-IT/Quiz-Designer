@@ -1,7 +1,6 @@
 import { LOGIN_USER, LOGOUT_USER, REGISTER_USER } from '../actions/user.actions';
 import { isAuthenticated } from '../utils/auth';
 
-
 const initState = {
   isLoggedIn: isAuthenticated(),
 };

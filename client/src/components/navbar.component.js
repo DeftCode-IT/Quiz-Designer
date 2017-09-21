@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logoutUser } from '../actions/user.actions';
 
-
 const Navbar = ({ isUserLoggedIn, logout }) => {
   const AuthBtn = isUserLoggedIn ?
     (
@@ -51,7 +50,6 @@ Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-
 const mapStateToProps = state => ({
   isUserLoggedIn: state.user.isLoggedIn,
 });
@@ -59,4 +57,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logoutUser()),
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
