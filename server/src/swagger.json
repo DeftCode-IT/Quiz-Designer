@@ -252,7 +252,81 @@
         "responses": {
           "201": {
             "schema": {
-              "$ref": "#/definitions/Quiz"
+              "type": "object",
+              "required": [
+                "title",
+                "successMessage",
+                "failureMessage",
+                "pointsToSuccess",
+                "status",
+                "version",
+                "createdBy"
+              ],
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "Some title example for quiz"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Example of some longer description for some of the quizes"
+                },
+                "successMessage": {
+                  "type": "string",
+                  "example": "Hooray! You have passed our quiz!"
+                },
+                "failureMessage": {
+                  "type": "string",
+                  "example": "Oh no! You have failed our quiz :("
+                },
+                "pointsToSuccess": {
+                  "type": "integer",
+                  "example": 24
+                },
+                "url": {
+                  "type": "string",
+                  "example": "http://quizdesigner/quiz/x223xsdfsf3kh21"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "published"
+                },
+                "version": {
+                  "type": "integer",
+                  "example": 4
+                },
+                "createdBy": {
+                  "type": "string",
+                  "example": "someuserid312331mdkdasda2giyzx"
+                },
+                "questions": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Question"
+                  }
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "questionIndex": {
+                          "type": "integer"
+                        },
+                        "answers": {
+                          "type": "array",
+                          "items": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": []
+                }
+              }
             }
           },
           "error": {
