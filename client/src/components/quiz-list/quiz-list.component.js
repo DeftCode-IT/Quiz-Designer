@@ -2,8 +2,8 @@ import React from 'react';
 import ReactTable from 'react-table';
 import PropTypes from 'prop-types';
 
-import QuizStatus from './quiz-status';
-import QuizPassingPercentage from './quiz-passing-percentage';
+import QuizStatus from './quiz-status.component';
+import QuizPassingPercentage from './quiz-passing-percentage.component';
 
 function generateData() {
   const dataSet = [];
@@ -72,7 +72,7 @@ const QuizList = props => (
         Header: 'Data utworzenia',
         accessor: 'createdAt',
         maxWidth: 200,
-        style: { 'text-align': 'center' },
+        style: { textAlign: 'center' },
       },
       {
         Header: 'Status',
@@ -84,19 +84,19 @@ const QuizList = props => (
         Header: 'Liczba pytań',
         accessor: 'questionsCount',
         maxWidth: 150,
-        style: { 'text-align': 'center' },
+        style: { textAlign: 'center' },
       },
       {
         Header: 'Liczba wypełnień',
         accessor: 'filledQuizesCount',
         maxWidth: 150,
-        style: { 'text-align': 'center' },
+        style: { textAlign: 'center' },
       },
       {
         Header: 'Procent zaliczeń',
         accessor: 'passedQuizesPercentage',
         maxWidth: 150,
-        style: { 'text-align': 'center' },
+        style: { textAlign: 'center' },
         Cell: row => <QuizPassingPercentage percentage={row.value} />,
       },
     ]}

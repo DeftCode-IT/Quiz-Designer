@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { registerUser } from '../actions/user';
+import { registerUser } from '../actions/user.actions';
 
 
 class RegisterBox extends React.Component {
@@ -76,12 +76,9 @@ class RegisterBox extends React.Component {
 
 RegisterBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
-  register: PropTypes.func,
+  register: PropTypes.func.isRequired,
 };
 
-RegisterBox.defaultProps = {
-  register: () => {},
-};
 
 const mapDispatchToProps = dispatch => ({
   register: (email, password) => dispatch(registerUser(email, password)),

@@ -1,9 +1,9 @@
-import { LOGIN_USER, LOGOUT_USER, REGISTER_USER } from '../actions/user';
-import { checkAuth } from '../utils/auth';
+import { LOGIN_USER, LOGOUT_USER, REGISTER_USER } from '../actions/user.actions';
+import { isAuthenticated } from '../utils/auth';
 
 
 const initState = {
-  isLoggedIn: checkAuth(),
+  isLoggedIn: isAuthenticated(),
 };
 
 export default function (state = initState, action) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterBox from './../components/register-box';
+import RegisterBox from './../components/register-box.component';
 
 const RegisterPage = () => (
   <div className="qd-register-page">

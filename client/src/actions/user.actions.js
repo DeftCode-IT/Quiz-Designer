@@ -1,4 +1,4 @@
-import { loginUserDB, registerUserDB, saveToken, removeToken } from '../utils/auth';
+import { login, register, saveToken, removeToken } from '../utils/auth';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -6,7 +6,7 @@ export const REGISTER_USER = 'REGISTER_USER';
 
 
 export function loginUser(email, password) {
-  return dispatch => loginUserDB(email, password).then((res) => {
+  return dispatch => login(email, password).then(res => {
     const token = res.data.data.token;
     saveToken(token);
 
@@ -20,7 +20,7 @@ export function loginUser(email, password) {
 }
 
 export function logoutUser() {
-  return (dispatch) => {
+  return dispatch => {
     removeToken();
 
     dispatch({
@@ -31,7 +31,7 @@ export function logoutUser() {
 }
 
 export function registerUser(email, password) {
-  return dispatch => registerUserDB(email, password).then((res) => {
+  return dispatch => register(email, password).then(res => {
     dispatch({
       type: REGISTER_USER,
     });

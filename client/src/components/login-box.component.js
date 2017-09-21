@@ -4,7 +4,7 @@ import { Input, Button, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { loginUser } from '../actions/user';
+import { loginUser } from '../actions/user.actions';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class LoginBox extends React.Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    this.props.onLogin(email, password).then(() => {
+    this.props.login(email, password).then(() => {
       this.props.history.push('/list');
     });
     // .catch(error => console.log(error)); // uncomment only for debugging
@@ -65,15 +65,12 @@ class LoginBox extends React.Component {
 
 LoginBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
-  onLogin: PropTypes.func,
+  login: PropTypes.func.isRequired,
 };
 
-LoginBox.defaultProps = {
-  onLogin: () => {},
-};
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: (email, password) => dispatch(loginUser(email, password)),
+  login: (email, password) => dispatch(loginUser(email, password)),
 });
 
 export default connect(null, mapDispatchToProps)(withRouter(LoginBox));
