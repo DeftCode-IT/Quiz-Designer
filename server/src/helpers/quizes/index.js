@@ -11,10 +11,10 @@ const getPrivateList = (userID, page, pageSize = 40) => quizModel.count({ create
 
 const createQuiz = quizData => quizModel.create(quizData);
 
-const getOneQuiz = (quizId, userId) => quizModel.findOne({
+const getOneQuiz = (quizID, userID) => quizModel.findOne({
   $or: [
-    { _id: quizId, status: 'published' },
-    { _id: quizId, createdBy: userId }
+    { _id: quizID, status: 'published' },
+    { _id: quizID, createdBy: userID }
   ]
 })
   .then(data => {
