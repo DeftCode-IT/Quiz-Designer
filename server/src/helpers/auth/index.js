@@ -27,7 +27,7 @@ const login = body => {
         return p.reject(Error(errors.INVALID_CREDENTIALS.name));
       }
 
-      return _.pick(user, ['password']);
+      return _.pick(user, ['_id']);
     })
     .then(generateToken);
 };
