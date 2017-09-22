@@ -604,20 +604,17 @@
       }
     },
     "Result": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "questionIndex": {
+      "type": "object",
+      "properties": {
+        "questionIndex": {
+          "type": "integer",
+          "example": 1
+        },
+        "answers": {
+          "type": "array",
+          "items": {
             "type": "integer",
-            "example": 1
-          },
-          "answers": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "example": [1, 3]
-            }
+            "example": [1, 3]
           }
         }
       }
