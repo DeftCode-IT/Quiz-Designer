@@ -2,8 +2,9 @@ import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { registerUser } from '../utils/auth';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../actions/user.actions';
 
 class RegisterBox extends React.Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class RegisterBox extends React.Component {
       password: '',
       repeatedPassword: '',
     };
+
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   onChangeInput(e, inputName) {
@@ -20,15 +23,13 @@ class RegisterBox extends React.Component {
     this.setState({ [inputName]: value });
   }
 
-
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password, repeatedPassword } = this.state;
     if (password === repeatedPassword) {
-      registerUser(email, password)
-        .then(() => {
-          this.props.history.push('/login');
-        });
+      this.props.register(email, password).then(() => {
+        this.props.history.push('/login');
+      });
       // .catch(error => console.log(error)); // uncomment only for debugging
     }
   }
@@ -70,9 +71,13 @@ class RegisterBox extends React.Component {
   }
 }
 
-
 RegisterBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default withRouter(RegisterBox);
+const mapDispatchToProps = dispatch => ({
+  register: (email, password) => dispatch(registerUser(email, password)),
+});
+
+export default connect(null, mapDispatchToProps)(withRouter(RegisterBox));

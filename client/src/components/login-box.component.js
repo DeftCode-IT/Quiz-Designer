@@ -1,16 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { loginUser } from '../utils/auth';
+import { loginUser } from '../actions/user.actions';
 
 class LoginBox extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: '',
       password: '',
     };
+
+    this.onSubmitForm = this.onSubmitForm.bind(this);
   }
 
   onChangeInput(e, inputName) {
@@ -22,8 +27,7 @@ class LoginBox extends React.Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    loginUser(email, password).then((resolve) => {
-      localStorage.setItem('token', resolve.data.data.token);
+    this.props.login(email, password).then(() => {
       this.props.history.push('/list');
     });
     // .catch(error => console.log(error)); // uncomment only for debugging
@@ -61,6 +65,12 @@ class LoginBox extends React.Component {
 
 LoginBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
-export default withRouter(LoginBox);
+
+const mapDispatchToProps = dispatch => ({
+  login: (email, password) => dispatch(loginUser(email, password)),
+});
+
+export default connect(null, mapDispatchToProps)(withRouter(LoginBox));

@@ -3,7 +3,8 @@
         "no-underscore-dangle": ["off"],
         "max-len": ["warn", 200],
         "indent": ["error", 2],
-        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }]
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+        "arrow-parens": ["warn", "as-needed"]
     },
     "env": {
         "browser": true
