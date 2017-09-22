@@ -604,32 +604,19 @@
       }
     },
     "Result": {
-      "type": "object",
-      "required": [
-        "user",
-        "answers"
-      ],
-      "properties": {
-        "user": {
-          "type": "string",
-          "example": "someuserid312331mdkdasda2giyzx"
-        },
-        "answers": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "questionIndex": {
-                "type": "integer",
-                "example": 1
-              },
-              "answers": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "example": [1, 3]
-                }
-              }
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "questionIndex": {
+            "type": "integer",
+            "example": 1
+          },
+          "answers": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "example": [1, 3]
             }
           }
         }
