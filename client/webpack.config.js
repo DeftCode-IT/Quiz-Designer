@@ -16,7 +16,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/, enforce: 'pre', options: {
-        formatter: require('eslint-friendly-formatter')
+        formatter: require('eslint-friendly-formatter'),
+        fix: true
       }},
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },

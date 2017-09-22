@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { openQuizPreview } from '../../actions/quiz-list.actions';
 import QuizStatus from './quiz-status.component';
 import QuizPassingPercentage from './quiz-passing-percentage.component';
+import constants from './../../utils/constants';
 
 function generateData() {
   const dataSet = [];
@@ -55,8 +57,10 @@ function generateData() {
 
 const data = generateData();
 
-const QuizList = props => (
-  <ReactTable
+const QuizList = props => {
+  const heightAdjustment = props.selectedQuiz ? constants.quizPreviewHeight + 50 : 50;
+
+  return (<ReactTable
     data={data}
     columns={[
       {
@@ -100,7 +104,7 @@ const QuizList = props => (
         Cell: row => <QuizPassingPercentage percentage={row.value} />,
       },
     ]}
-    style={{ height: `calc(${props.height}vh - 50px)` }}
+    style={{ height: `calc(100vh - ${heightAdjustment}px)` }}
     className="-striped"
     defaultPageSize={30}
     previousText="Poprzednie"
@@ -112,15 +116,21 @@ const QuizList = props => (
     showPageSizeOptions={false}
     resizable={false}
     sortable={false}
-  />
-);
-
-QuizList.propTypes = {
-  height: PropTypes.number,
+    getTrProps={(state, rowInfo) => ({
+      onClick: () => {
+        props.selectQuiz(rowInfo.original);
+      },
+    })
+    }
+  />);
 };
 
-QuizList.defaultProps = {
-  height: 100,
-};
+const mapStateToProps = state => ({
+  selectedQuiz: state.previewSelectedQuiz,
+});
 
-export default QuizList;
+const mapDispatchToProps = dispatch => ({
+  selectQuiz: quiz => dispatch(openQuizPreview(quiz)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizList);

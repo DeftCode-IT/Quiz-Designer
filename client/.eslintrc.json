@@ -1,5 +1,6 @@
 {
     "rules": {
+        "react/prop-types": ["off"],
         "no-underscore-dangle": ["off"],
         "max-len": ["warn", 200],
         "indent": ["error", 2],
