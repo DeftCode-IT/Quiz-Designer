@@ -28,6 +28,16 @@ const verifyToken = token => {
     .catch(() => p.reject(Error(errors.EXPIRED_TOKEN.name)));
 };
 
+const verifyTokenQuiz = token => jwtVerify(token, jwtConfig.secret)
+  .then(decoded => {
+    if (!decoded) {
+      return null;
+    }
+
+    return decoded;
+  })
+  .catch(() => null);
+
 const generateToken = payload => {
   if (!payload) {
     return p.reject(Error(errors.PAYLOAD_NOT_SPECIFIED.name));
@@ -44,5 +54,6 @@ const generateToken = payload => {
 
 module.exports = {
   generateToken,
-  verifyToken
+  verifyToken,
+  verifyTokenQuiz
 };

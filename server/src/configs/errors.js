@@ -43,5 +43,10 @@ module.exports = {
     name: 'USER_EXISTS',
     message: 'The user already exists',
     code: 500
+  },
+  QUIZ_NOT_FOUND: {
+    name: 'QUIZ_NOT_FOUND',
+    code: 404,
+    message: 'Quiz was not found.'
   }
 };

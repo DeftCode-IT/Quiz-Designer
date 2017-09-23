@@ -8,9 +8,11 @@ const quizSchema = mongoose.Schema({
   pointsToSuccess: Number,
   url: String,
   editMode: Boolean,
+  status: String,
   version: Number,
   createdBy: String,
-  questions: [String]
+  questions: [String],
+  results: [String]
 });
 
 module.exports = mongoose.model('quiz', quizSchema);
