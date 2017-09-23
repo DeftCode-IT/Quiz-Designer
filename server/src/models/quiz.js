@@ -14,7 +14,9 @@ const quizSchema = mongoose.Schema({
   questions: [
     {
       index: Number,
-      type: String,
+      type: {
+        type: String
+      },
       question: String,
       answers: [String],
       correctAnswers: [Number]

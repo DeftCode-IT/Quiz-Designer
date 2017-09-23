@@ -40,7 +40,8 @@ const getOne = (quizID, userID) => quizModel.findOne({
 
 const editOne = (quizID, body) => quizModel.findByIdAndUpdate(quizID, body);
 
-const saveResult = (quizID, body) => quizModel.findByIdAndUpdate(quizID, { $push: { results: body } });
+const saveResult = (quizID, body) => quizModel.findByIdAndUpdate(quizID, { $push: { results: body } })
+  .then(quiz => _.assign(quiz, { results: body }));
 
 module.exports = {
   getList,
