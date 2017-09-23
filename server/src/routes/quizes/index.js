@@ -10,6 +10,6 @@ router
   .post('/', authenticate, createQuiz, resolve)
   .patch('/:id', authenticate, editQuiz, resolve)
   .get('/:id', authQuizAccess, getOneQuiz, resolve)
-  .patch('/:id/result', saveResultQuiz, resolve);
+  .patch('/:id/fill', saveResultQuiz, resolve);
 
 module.exports = router;
