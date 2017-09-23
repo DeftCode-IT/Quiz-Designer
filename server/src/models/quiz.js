@@ -12,7 +12,12 @@ const quizSchema = mongoose.Schema({
   version: Number,
   createdBy: String,
   questions: [String],
-  results: [String]
+  results: [
+    {
+      questionIndex: Number,
+      answers: [Number]
+    }
+  ]
 });
 
 module.exports = mongoose.model('quiz', quizSchema);

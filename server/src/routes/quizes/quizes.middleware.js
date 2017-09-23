@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { getList, create, editOne, getOne } = require('./quizes.helpers');
+const { getList, create, editOne, getOne, saveResult } = require('./quizes.helpers');
 
 const createQuiz = (req, res, next) =>
   create(req.body)
@@ -33,9 +33,18 @@ const getListQuiz = (req, res, next) =>
     })
     .catch(next);
 
+const saveResultQuiz = (req, res, next) =>
+  saveResult(req.params.id, req.body)
+    .then(data => {
+      _.assign(res, { result: data });
+      next();
+    })
+    .catch(next);
+
 module.exports = {
   createQuiz,
   editQuiz,
   getOneQuiz,
-  getListQuiz
+  getListQuiz,
+  saveResultQuiz
 };
