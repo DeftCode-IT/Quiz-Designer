@@ -11,7 +11,15 @@ const quizSchema = mongoose.Schema({
   status: String,
   version: Number,
   createdBy: String,
-  questions: [String],
+  questions: [
+    {
+      index: Number,
+      type: String,
+      question: String,
+      answers: [String],
+      correctAnswers: [Number]
+    }
+  ],
   results: [
     {
       questionIndex: Number,

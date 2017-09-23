@@ -3,11 +3,24 @@ const p = require('bluebird');
 const quizModel = require('./../../models').quiz;
 const { errors } = require('../../configs/index');
 
-const getList = (userID, page, pageSize = 40) => quizModel.count({ createdBy: userID })
-  .then(count => quizModel.find({ createdBy: userID })
-    .skip((page - 1) * pageSize)
-    .limit(+pageSize)
-    .then(quizes => _.assign({}, { data: quizes, totalCount: count, page, pageSize })));
+const getList = (userID, paged, pageSizep = 40) => {
+  const page = Number(paged);
+  const pageSize = Number(pageSizep);
+
+  if (!page) {
+    return p.reject(Error(errors.PAGE_IS_REQUIRED.name));
+  }
+
+  if (!pageSize) {
+    return p.reject(Error(errors.INVALID_PARAMETER_VALUE.name));
+  }
+
+  return quizModel.count({ createdBy: userID })
+    .then(count => quizModel.find({ createdBy: userID })
+      .skip((page - 1) * pageSize)
+      .limit(pageSize)
+      .then(quizes => _.assign({}, { data: quizes, totalCount: count, page, pageSize })));
+};
 
 const create = quizData => quizModel.create(quizData);
 

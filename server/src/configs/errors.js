@@ -48,5 +48,15 @@ module.exports = {
     name: 'QUIZ_NOT_FOUND',
     code: 404,
     message: 'Quiz was not found.'
+  },
+  PAGE_IS_REQUIRED: {
+    name: 'PAGE_IS_REQUIRED',
+    code: 401,
+    message: 'Parameter Page is required'
+  },
+  INVALID_PARAMETER_VALUE: {
+    name: 'INVALID_PARAMETER_VALUE',
+    code: 401,
+    message: 'Invalid parameter value'
   }
 };
