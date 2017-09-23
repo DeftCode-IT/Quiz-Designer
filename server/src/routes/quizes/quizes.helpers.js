@@ -3,15 +3,15 @@ const p = require('bluebird');
 const quizModel = require('./../../models').quiz;
 const { errors } = require('../../configs/index');
 
-const getPrivateList = (userID, page, pageSize = 40) => quizModel.count({ createdBy: userID })
+const getList = (userID, page, pageSize = 40) => quizModel.count({ createdBy: userID })
   .then(count => quizModel.find({ createdBy: userID })
     .skip((page - 1) * pageSize)
     .limit(+pageSize)
     .then(quizes => _.assign({}, { data: quizes, totalCount: count, page, pageSize })));
 
-const createQuiz = quizData => quizModel.create(quizData);
+const create = quizData => quizModel.create(quizData);
 
-const getOneQuiz = (quizID, userID) => quizModel.findOne({
+const getOne = (quizID, userID) => quizModel.findOne({
   $or: [
     { _id: quizID, status: 'published' },
     { _id: quizID, createdBy: userID }
@@ -25,11 +25,11 @@ const getOneQuiz = (quizID, userID) => quizModel.findOne({
     return data;
   });
 
-const editOneQuiz = (quizID, body) => quizModel.findByIdAndUpdate(quizID, body);
+const editOne = (quizID, body) => quizModel.findByIdAndUpdate(quizID, body);
 
 module.exports = {
-  getPrivateList,
-  createQuiz,
-  getOneQuiz,
-  editOneQuiz
+  getList,
+  create,
+  getOne,
+  editOne
 };
