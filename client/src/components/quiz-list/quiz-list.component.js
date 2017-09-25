@@ -19,6 +19,7 @@ function generateData() {
       questionsCount: 24,
       filledQuizesCount: 67,
       passedQuizesPercentage: 87,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
 
     dataSet.push({
@@ -29,6 +30,7 @@ function generateData() {
       questionsCount: 0,
       filledQuizesCount: 0,
       passedQuizesPercentage: 0,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
 
     dataSet.push({
@@ -39,6 +41,7 @@ function generateData() {
       questionsCount: 32,
       filledQuizesCount: 47,
       passedQuizesPercentage: 56,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
 
     dataSet.push({
@@ -49,6 +52,7 @@ function generateData() {
       questionsCount: 34,
       filledQuizesCount: 17,
       passedQuizesPercentage: 12,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
   }
 
@@ -105,7 +109,7 @@ const QuizList = props => {
       },
     ]}
     style={{ height: `calc(100vh - ${heightAdjustment}px)` }}
-    className="-striped"
+    className="-striped -highlight"
     defaultPageSize={30}
     previousText="Poprzednie"
     nextText="Następne"
