@@ -22,7 +22,8 @@ const getList = (userID, paged, pageSizep = 40) => {
       .then(quizes => _.assign({}, { data: quizes, totalCount: count, page, pageSize })));
 };
 
-const create = quizData => quizModel.create(quizData);
+const create = (quizData, userID) => quizModel.create(_.assign(quizData, { createdBy: userID }));
+
 
 const getOne = (quizID, userID) => quizModel.findOne({
   $or: [

@@ -1,15 +1,34 @@
 const mongoose = require('mongoose');
 
 const quizSchema = mongoose.Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true
+  },
   description: String,
-  successMessage: String,
-  failureMessage: String,
-  pointsToSuccess: Number,
+  successMessage: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  failureMessage: {
+    type: String,
+    required: true
+  },
+  pointsToSuccess: {
+    type: Number,
+    required: true
+  },
   url: String,
   editMode: Boolean,
-  status: String,
-  version: Number,
+  status: {
+    type: String,
+    required: true
+  },
+  version: {
+    type: Number,
+    required: true
+  },
   createdBy: String,
   questions: [
     {

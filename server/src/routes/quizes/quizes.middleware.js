@@ -2,7 +2,7 @@ const _ = require('lodash');
 const { getList, create, editOne, getOne, saveResult } = require('./quizes.helpers');
 
 const createQuiz = (req, res, next) =>
-  create(req.body)
+  create(req.body, req.resources.payload._id)
     .then(data => {
       _.assign(res, { result: { data } });
       next();
