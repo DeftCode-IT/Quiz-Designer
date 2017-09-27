@@ -40,6 +40,11 @@ class LoginBox extends React.Component {
           <h1 className="qd-login-box__title">Witaj!</h1>
           <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onChangeInput(e, 'email')} placeholder="Twój login..." />
           <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
+          {this.props.isError ?
+            <div className="qd-login-box__error">
+            Logowanie nie powiodło się
+            </div>
+            : null}
           <div className="qd-login-box__actions qd-actions">
             <Link to="/register">
               <Button className="actions__btn" type="button" animated>
@@ -49,12 +54,18 @@ class LoginBox extends React.Component {
                 </Button.Content>
               </Button>
             </Link>
-            <Button className="actions__btn" type="submit" animated>
-              <Button.Content visible>Zaloguj się</Button.Content>
-              <Button.Content hidden>
-                <Icon name="right arrow" />
-              </Button.Content>
-            </Button>
+            {this.props.isStart ?
+              <Button className="actions__btn" type="submit" animated>
+                <img className="actions__loader" src="src/images/loader.svg" alt="" />
+              </Button>
+              :
+              <Button className="actions__btn" type="submit" animated>
+                <Button.Content visible>Zaloguj się</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="right arrow" />
+                </Button.Content>
+              </Button> }
+
           </div>
         </form>
         <a className="qd-missing-pass-link" href="/">Nie pamiętasz hasła?</a>
@@ -66,11 +77,17 @@ class LoginBox extends React.Component {
 LoginBox.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   login: PropTypes.func.isRequired,
+  isStart: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
 };
 
+const mapStateToProps = state => ({
+  isStart: state.user.isStart,
+  isError: state.user.isError,
+});
 
 const mapDispatchToProps = dispatch => ({
   login: (email, password) => dispatch(loginUser(email, password)),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(LoginBox));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginBox));
