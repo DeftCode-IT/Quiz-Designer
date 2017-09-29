@@ -1,11 +1,10 @@
-process.env.NODE_ENV = 'test';
-
 const chai = require('chai');
 const request = require('supertest');
 const app = require('./../src/index');
+const helpers = require('./helpers');
 chai.should();
 
-describe('Authorization and authentication', done => {
+describe('Authorization and authentication', () => {
   describe('Testing /login endpoint', () => {
     it('should login and get token in response', done => {
       request(app)
@@ -18,6 +17,7 @@ describe('Authorization and authentication', done => {
         res.body.should.have.property('data');
         res.body.data.should.have.property('token');
         res.body.data.token.should.be.a('string');
+        helpers.constants.token = res.body.data.token;
       })
       .expect(200)
       .end(done);

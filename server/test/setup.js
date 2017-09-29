@@ -1,7 +1,10 @@
+process.env.NODE_ENV = 'test';
+
 const mongoose = require('mongoose');
 const p = require('bluebird');
 const config = require('./../src/config');
 const user = require('./../src/models/user');
+const helpers = require('./helpers');
 const dbConfig = config.database.test;
 
 const options = {
@@ -14,10 +17,7 @@ before(done => {
 
   mongoose.connect(uri, options).then(() => {
     mongoose.connection.dropDatabase(() => {
-      user.create({
-        email: 'example@example.com',
-        password: '$2a$10$1Dih.A4T/LsoFnqyYHo93u25Wkv67wKHTr8sDANrh9c2BiJR8ZjF6'
-      }).then(() => {
+      user.create(helpers.createUser()).then(() => {
         done();
       });
     });

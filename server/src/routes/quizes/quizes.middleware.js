@@ -4,6 +4,7 @@ const { getList, create, editOne, getOne, saveResult } = require('./quizes.helpe
 const createQuiz = (req, res, next) =>
   create(req.body, req.resources.payload._id)
     .then(data => {
+      res.status(201);
       _.assign(res, { result: { data } });
       next();
     })

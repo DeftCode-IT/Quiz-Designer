@@ -24,7 +24,6 @@ const getList = (userID, paged, pageSizep = 40) => {
 
 const create = (quizData, userID) => quizModel.create(_.assign(quizData, { createdBy: userID }));
 
-
 const getOne = (quizID, userID) => quizModel.findOne({
   $or: [
     { _id: quizID, status: 'published' },
