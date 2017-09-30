@@ -48,5 +48,7 @@ const quizSchema = mongoose.Schema({
   ]
 });
 
+quizSchema.index({ title: 1, version: 1 }, { unique: true });
+
 module.exports = mongoose.model('quiz', quizSchema);
 

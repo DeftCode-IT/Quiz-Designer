@@ -16,9 +16,18 @@ describe('Quizzes', () => {
           .end(done);
       });
 
-      // it('should not add quiz with same name and version', () => {
-      //
-      // });
+      it('should not add quiz with same name and version', done => {
+        request(app)
+        .post('/api/quizes')
+        .set('Authorization', helpers.constants.token)
+        .send(helpers.createQuiz({title: 'First title of quiz'}))
+        .expect(res => {
+          res.body.name.should.be.equal('MongoError');
+          res.body.code.should.be.equal(500);
+        })
+        .expect(500)
+        .end(done);
+      });
 
       it('should not add quiz with missing data', done => {
         request(app)
