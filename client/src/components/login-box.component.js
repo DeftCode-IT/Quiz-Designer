@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { loginUser } from '../actions/user.actions';
+import constanst from '../utils/constants';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class LoginBox extends React.Component {
       password: '',
       isStart: false,
       isError: false,
+      errorMsg: '',
     };
 
     this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -36,8 +38,9 @@ class LoginBox extends React.Component {
         this.props.history.push('/list');
       })
       .catch(error => {
-        console.log(error);
-        this.setState({ isError: true, isStart: false });
+        const { errorMsg } = constanst;
+        const errorName = error.response.data.name;
+        this.setState({ isError: true, isStart: false, errorMsg: errorMsg[errorName] });
       });
   }
 
@@ -50,7 +53,7 @@ class LoginBox extends React.Component {
           <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
           {this.state.isError ?
             <div className="qd-login-box__error">
-            Logowanie nie powiodło się
+              { this.state.errorMsg }
             </div>
             : null}
           <div className="qd-login-box__actions qd-actions">
