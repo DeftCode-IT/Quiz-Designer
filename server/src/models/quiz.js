@@ -8,8 +8,7 @@ const quizSchema = mongoose.Schema({
   description: String,
   successMessage: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   failureMessage: {
     type: String,

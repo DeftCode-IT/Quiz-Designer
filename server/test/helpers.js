@@ -9,7 +9,33 @@ const createUser = (config = {}) => {
   }, config);
 };
 
+const createQuiz = (config = {}) => {
+  return Object.assign({
+    title: 'Some title example for quiz',
+    successMessage: 'Message that will be shown if user pass quiz',
+    failureMessage: 'Message that will be shown if user fail quiz',
+    pointsToSuccess: 24,
+    status: 'published',
+    version: 4,
+    questions: [{
+      index: 1,
+      type: 'multiple',
+      question: 'How old is statue of liberty?',
+      answers: [
+        'Very old',
+        'Pretty young',
+        'Not that old'
+      ],
+      correctAnswers: [
+        1,
+        3
+      ]
+    }]
+  }, config);
+};
+
 module.exports = {
   constants,
-  createUser
+  createUser,
+  createQuiz
 };
