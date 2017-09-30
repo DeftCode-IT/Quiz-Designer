@@ -6,8 +6,8 @@ const constants = {
     login: 'auth/login',
   },
   errorMsg: {
-    INVALID_CREDENTIALS: 'Niepoprawne dane do logowanie',
-    MISSING_CREDENTIALS: 'Pole formularza nie zostały wypełnione',
+    INVALID_CREDENTIALS: 'Niepoprawne dane do logowania',
+    MISSING_CREDENTIALS: 'Pola formularza nie zostały wypełnione',
   },
 };
 

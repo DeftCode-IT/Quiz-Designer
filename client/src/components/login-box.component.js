@@ -14,8 +14,8 @@ class LoginBox extends React.Component {
     this.state = {
       email: '',
       password: '',
-      isStart: false,
-      isError: false,
+      isLoading: false,
+      hasError: false,
       errorMsg: '',
     };
 
@@ -31,16 +31,16 @@ class LoginBox extends React.Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    this.setState({ isStart: true });
+    this.setState({ isLoading: true });
     this.props.login(email, password)
       .then(() => {
-        this.setState({ isStart: false });
+        this.setState({ isLoading: false });
         this.props.history.push('/list');
       })
       .catch(error => {
         const { errorMsg } = constanst;
         const errorName = error.response.data.name;
-        this.setState({ isError: true, isStart: false, errorMsg: errorMsg[errorName] });
+        this.setState({ hasError: true, isLoading: false, errorMsg: errorMsg[errorName] });
       });
   }
 
@@ -51,7 +51,7 @@ class LoginBox extends React.Component {
           <h1 className="qd-login-box__title">Witaj!</h1>
           <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onChangeInput(e, 'email')} placeholder="Twój login..." />
           <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
-          {this.state.isError ?
+          {this.state.hasError ?
             <div className="qd-login-box__error">
               { this.state.errorMsg }
             </div>
