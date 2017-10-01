@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./auth');
-const quizesRoutes = require('./quizes');
+const quizzesRoutes = require('./quizzes');
 
 const router = express.Router();
 
@@ -11,6 +11,6 @@ router
     extended: true
   }))
   .use('/auth', authRoutes)
-  .use('/quizes', quizesRoutes);
+  .use('/quizzes', quizzesRoutes);
 
 module.exports = router;

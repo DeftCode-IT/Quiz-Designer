@@ -1,8 +1,9 @@
 const express = require('express');
 
-const router = express.Router();
 const { loginUser, registerUser } = require('./auth.middleware');
-const { resolve } = require('./../../helpers');
+const resolve = require('./../../middlewares/resolver');
+
+const router = express.Router();
 
 router
   .post('/login', loginUser, resolve)

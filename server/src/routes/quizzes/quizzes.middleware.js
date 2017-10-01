@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const { getList, create, editOne, getOne, saveResult } = require('./quizes.helpers');
+const { getList, create, editOne, getOne, saveResult } = require('./quizzes.helpers');
 
 const createQuiz = (req, res, next) =>
   create(req.body, req.resources.payload._id)

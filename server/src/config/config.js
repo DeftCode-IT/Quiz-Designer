@@ -1,5 +1,5 @@
 module.exports = {
-  database: {
+  databaseConfig: {
     prod: {
       host: 'mongo12.mydevil.net',
       port: 27017,

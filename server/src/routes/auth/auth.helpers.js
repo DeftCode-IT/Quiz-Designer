@@ -2,13 +2,14 @@ const p = require('bluebird');
 const _ = require('lodash');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
-const userModel = require('./../../models').user;
-const { errors } = require('../../configs/index');
-const { generateToken } = require('./../../middlewares/json-web-token');
+
+const { userModel } = require('./../../models');
+const { errors } = require('../../config/index');
+const { generateToken } = require('./../../middlewares/json-web-token/repository');
 
 mongoose.Promise = p;
 
-const removeFragileData = user => _.omit(user.toJSON(), [
+const removeFragileData = user => _.omit(user, [
   'password',
   '__v',
   '_id'
@@ -50,6 +51,7 @@ const create = data => {
       user.password = bcrypt.hashSync(user.password);
       return userModel.create(user);
     })
+    .then(createdUser => _.assign(createdUser.toJSON(), { token: generateToken(createdUser) }))
     .then(removeFragileData);
 };
 

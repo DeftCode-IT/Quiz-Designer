@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const p = require('bluebird');
-const config = require('../config');
+const { databaseConfig } = require('./config');
 const logger = require('../helpers/logger');
 
 mongoose.Promise = p;
@@ -13,9 +13,9 @@ const options = {
 let dbConfig;
 
 if (process.env.NODE_ENV !== 'test') {
-  dbConfig = config.database.prod;
+  dbConfig = databaseConfig.prod;
 } else {
-  dbConfig = config.database.test;
+  dbConfig = databaseConfig.test;
 }
 
 const connect = () => {

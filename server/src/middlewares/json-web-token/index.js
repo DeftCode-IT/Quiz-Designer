@@ -1,7 +1,7 @@
 const _ = require('lodash');
-const verifyToken = require('./repository').verifyToken;
-const verifyTokenQuiz = require('./repository').verifyTokenQuiz;
-const generateToken = require('./repository').generateToken;
+
+const { verifyToken } = require('./repository');
+const { verifyTokenQuiz } = require('./repository');
 
 const authenticate = (req, res, next) => verifyToken(req.headers.authorization)
   .then(payload => {
@@ -24,6 +24,5 @@ const authQuizAccess = (req, res, next) => {
 
 module.exports = {
   authenticate,
-  generateToken,
   authQuizAccess
 };

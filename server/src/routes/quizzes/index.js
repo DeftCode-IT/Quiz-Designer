@@ -1,9 +1,10 @@
 const express = require('express');
 
-const router = express.Router();
-const { createQuiz, editQuiz, getOneQuiz, getListQuiz, saveResultQuiz } = require('./quizes.middleware');
+const { createQuiz, editQuiz, getOneQuiz, getListQuiz, saveResultQuiz } = require('./quizzes.middleware');
 const { authenticate, authQuizAccess } = require('./../../middlewares/json-web-token');
-const { resolve } = require('./../../helpers');
+const resolve = require('./../../middlewares/resolver');
+
+const router = express.Router();
 
 router
   .get('/', authenticate, getListQuiz, resolve)
