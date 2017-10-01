@@ -18,15 +18,20 @@ const uri = `mongodb://${dbConfig.dbUserName}:${dbConfig.dbPass}@${dbConfig.host
 before(done => {
   mongoose.connect(uri, options).then(() => {
     mongoose.connection.dropDatabase(() => {
-      const promises = [
+      p.all([
         user.create(helpers.createUser()),
-        quiz.create(helpers.createQuiz({title: 'First title of quiz'})),
-        quiz.create(helpers.createQuiz({title: 'Second title of quiz'})),
-        quiz.create(helpers.createQuiz({title: 'Third title of quiz'}))
-      ];
+        user.create(helpers.createUser())
+      ]).then(res => {
+        helpers.constants.user1 = res[0];
+        helpers.constants.user2 = res[1];
 
-      p.all(promises).then(() => {
-        done();
+        p.all([
+          quiz.create(helpers.createQuiz({title: 'First title of quiz', createdBy: res[0]._id})),
+          quiz.create(helpers.createQuiz({title: 'Second title of quiz', createdBy: res[1]._id})),
+          quiz.create(helpers.createQuiz({title: 'Third title of quiz', createdBy: res[1]._id}))
+        ]).then(() => {
+          done();
+        });
       }).catch(err => {
         console.log('ERROR: ', err);
       });

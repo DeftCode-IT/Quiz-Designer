@@ -1,5 +1,7 @@
 const constants = {
-  token: null
+  token: null,
+  user1: null,
+  user2: null
 };
 
 const createUser = (config = {}) => {

@@ -44,15 +44,24 @@ describe('Quizzes', () => {
       });
     });
 
-  //   describe('Getting quizzes', () => {
-  //     it('should get quizzes list for requesting user', () => {
-  //
-  //     });
-  //
-  //     it('should not get quizzes list of different user', () => {
-  //
-  //     });
-  //   });
+    describe('Getting quizzes', () => {
+      it('should get quizzes list for requesting user', done => {
+        request(app)
+          .get('/api/quizes?page=1')
+          .set('Authorization', helpers.constants.token)
+          .send()
+          .expect(res => {
+            console.log(res.body)
+
+          })
+          .expect(200)
+          .end(done);
+      });
+
+      // it('should not get quizzes list of different user', () => {
+      //
+      // });
+    });
   });
 
   // describe('Testing /quizzes/:id endpoint', () => {
