@@ -10,8 +10,8 @@ describe('Authorization and authentication', () => {
       request(app)
       .post('/api/auth/login')
       .send({
-        email: 'example@example.com',
-        password: 'examplepassword'
+        email: helpers.constants.user1.email,
+        password: helpers.constants.user1.password
       })
       .expect(res => {
         res.body.should.have.property('data');
@@ -60,7 +60,7 @@ describe('Authorization and authentication', () => {
       request(app)
       .post('/api/auth/register')
       .send({
-        email: 'example2@example.com',
+        email: 'example3@example.com',
         password: 'examplepassword2'
       })
       .expect(res => {

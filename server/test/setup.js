@@ -1,12 +1,13 @@
 process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
+const _ = require('lodash');
 const p = require('bluebird');
-const config = require('./../src/config');
-const user = require('./../src/models/user');
+const { config } = require('./../src/config');
+const createUser = require('./../src/routes/auth/auth.helpers').create;
 const quiz = require('./../src/models/quiz');
 const helpers = require('./helpers');
-const dbConfig = config.database.test;
+const dbConfig = config.databaseConfig.test;
 
 const options = {
   promiseLibrary: p,
@@ -19,11 +20,11 @@ before(done => {
   mongoose.connect(uri, options).then(() => {
     mongoose.connection.dropDatabase(() => {
       p.all([
-        user.create(helpers.createUser()),
-        user.create(helpers.createUser())
+        createUser({email: helpers.constants.user1.email, password: helpers.constants.user1.password}),
+        createUser({email: helpers.constants.user2.email, password: helpers.constants.user1.password})
       ]).then(res => {
-        helpers.constants.user1 = res[0];
-        helpers.constants.user2 = res[1];
+        helpers.constants.user1 = _.assign(helpers.constants.user1, res[0]);
+        helpers.constants.user2 = _.assign(helpers.constants.user2, res[1]);
 
         p.all([
           quiz.create(helpers.createQuiz({title: 'First title of quiz', createdBy: res[0]._id})),

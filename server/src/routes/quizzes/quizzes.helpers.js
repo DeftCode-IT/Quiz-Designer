@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const p = require('bluebird');
-const quizModel = require('./../../models').quiz;
+const { quizModel } = require('./../../models');
 const { errors } = require('../../config/index');
 
 const getList = (userID, paged, pageSizep = 40) => {

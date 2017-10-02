@@ -10,9 +10,7 @@ const { generateToken } = require('./../../middlewares/json-web-token/repository
 mongoose.Promise = p;
 
 const removeFragileData = user => _.omit(user, [
-  'password',
-  '__v',
-  '_id'
+  'password'
 ]);
 
 const login = body => {

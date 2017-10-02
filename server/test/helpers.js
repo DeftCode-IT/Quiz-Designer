@@ -1,14 +1,16 @@
 const constants = {
-  token: null,
-  user1: null,
-  user2: null
-};
-
-const createUser = (config = {}) => {
-  return Object.assign({
+  user1: {
     email: 'example@example.com',
-    password: '$2a$10$1Dih.A4T/LsoFnqyYHo93u25Wkv67wKHTr8sDANrh9c2BiJR8ZjF6'
-  }, config);
+    password: 'examplepassword',
+    token: null,
+    _id: null
+  },
+  user2: {
+    email: 'example2@example.com',
+    password: 'examplepassword',
+    token: null,
+    _id: null
+  }
 };
 
 const createQuiz = (config = {}) => {
@@ -19,6 +21,7 @@ const createQuiz = (config = {}) => {
     pointsToSuccess: 24,
     status: 'published',
     version: 4,
+    createdBy: '2hjjdhdj7kjd8a82j4b4bhj7',
     questions: [{
       index: 1,
       type: 'multiple',
@@ -38,6 +41,5 @@ const createQuiz = (config = {}) => {
 
 module.exports = {
   constants,
-  createUser,
   createQuiz
 };
