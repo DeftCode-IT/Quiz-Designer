@@ -18,18 +18,18 @@ describe('Quizzes', () => {
           .end(done);
       });
 
-      // it('should not add quiz with same name and version', done => {
-      //   request(app)
-      //   .post('/api/quizzes')
-      //   .set('Authorization', helpers.constants.user1.token)
-      //   .send(helpers.createQuiz({title: 'First title of quiz'}))
-      //   .expect(res => {
-      //     res.body.name.should.be.equal('MongoError');
-      //     res.body.code.should.be.equal(500);
-      //   })
-      //   .expect(500)
-      //   .end(done);
-      // });
+      it('should not add quiz with same name and version', done => {
+        request(app)
+        .post('/api/quizzes')
+        .set('Authorization', helpers.constants.user1.token)
+        .send(helpers.createQuiz({title: 'First title of quiz'}))
+        .expect(res => {
+          res.body.name.should.be.equal('MongoError');
+          res.body.code.should.be.equal(500);
+        })
+        .expect(500)
+        .end(done);
+      });
 
       it('should not add quiz with missing data', done => {
         request(app)
@@ -47,7 +47,7 @@ describe('Quizzes', () => {
     });
 
     describe('Getting quizzes', () => {
-      it('should get quizzes list for requesting user', done => {
+      it('should get quizzes list for requesting user only', done => {
         request(app)
           .get('/api/quizzes?page=1')
           .set('Authorization', helpers.constants.user1.token)
@@ -55,19 +55,14 @@ describe('Quizzes', () => {
           .expect(res => {
             const quizzes = res.body.data;
             const hasNotOwnedQuizzes = quizzes
-            .filter(quiz => {
-              return quiz.createdBy !== helpers.constants.user1._id;
-            })
+            .filter(quiz => quiz.createdBy !== helpers.constants.user1._id.toString())
             .length > 0;
+
             hasNotOwnedQuizzes.should.be.equal(false);
           })
           .expect(200)
           .end(done);
       });
-
-      // it('should not get quizzes list of different user', () => {
-      //
-      // });
     });
   });
 

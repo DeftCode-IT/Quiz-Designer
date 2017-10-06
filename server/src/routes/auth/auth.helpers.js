@@ -49,7 +49,11 @@ const create = data => {
       user.password = bcrypt.hashSync(user.password);
       return userModel.create(user);
     })
-    .then(createdUser => _.assign(createdUser.toJSON(), { token: generateToken(createdUser) }))
+    .then(createdUser => {
+      const createdUserObject = createdUser.toJSON();
+      const payload = _.pick(createdUserObject, ['_id']);
+      return _.assign(createdUserObject, { token: generateToken(payload) });
+    })
     .then(removeFragileData);
 };
 

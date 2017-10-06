@@ -17,7 +17,6 @@ describe('Authorization and authentication', () => {
         res.body.should.have.property('data');
         res.body.data.should.have.property('token');
         res.body.data.token.should.be.a('string');
-        helpers.constants.token = res.body.data.token;
       })
       .expect(200)
       .end(done);
