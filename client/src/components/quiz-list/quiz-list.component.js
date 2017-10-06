@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactTable from 'react-table';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { openQuizPreview } from '../../actions/quiz-list.actions';
 import QuizStatus from './quiz-status.component';
 import QuizPassingPercentage from './quiz-passing-percentage.component';
+import constants from './../../utils/constants';
 
 function generateData() {
   const dataSet = [];
@@ -17,6 +19,7 @@ function generateData() {
       questionsCount: 24,
       filledQuizesCount: 67,
       passedQuizesPercentage: 87,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
 
     dataSet.push({
@@ -27,6 +30,7 @@ function generateData() {
       questionsCount: 0,
       filledQuizesCount: 0,
       passedQuizesPercentage: 0,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
 
     dataSet.push({
@@ -37,6 +41,7 @@ function generateData() {
       questionsCount: 32,
       filledQuizesCount: 47,
       passedQuizesPercentage: 56,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
 
     dataSet.push({
@@ -47,6 +52,7 @@ function generateData() {
       questionsCount: 34,
       filledQuizesCount: 17,
       passedQuizesPercentage: 12,
+      recentlyFilledQuizzes: [14, 7, 6, 5, 4, 7, 12],
     });
   }
 
@@ -55,8 +61,10 @@ function generateData() {
 
 const data = generateData();
 
-const QuizList = props => (
-  <ReactTable
+const QuizList = props => {
+  const heightAdjustment = props.selectedQuiz ? constants.quizPreviewHeight + 50 : 50;
+
+  return (<ReactTable
     data={data}
     columns={[
       {
@@ -100,8 +108,8 @@ const QuizList = props => (
         Cell: row => <QuizPassingPercentage percentage={row.value} />,
       },
     ]}
-    style={{ height: `calc(${props.height}vh - 50px)` }}
-    className="-striped"
+    style={{ height: `calc(100vh - ${heightAdjustment}px)` }}
+    className="-striped -highlight"
     defaultPageSize={30}
     previousText="Poprzednie"
     nextText="Następne"
@@ -112,15 +120,21 @@ const QuizList = props => (
     showPageSizeOptions={false}
     resizable={false}
     sortable={false}
-  />
-);
-
-QuizList.propTypes = {
-  height: PropTypes.number,
+    getTrProps={(state, rowInfo) => ({
+      onClick: () => {
+        props.selectQuiz(rowInfo.original);
+      },
+    })
+    }
+  />);
 };
 
-QuizList.defaultProps = {
-  height: 100,
-};
+const mapStateToProps = state => ({
+  selectedQuiz: state.previewSelectedQuiz,
+});
 
-export default QuizList;
+const mapDispatchToProps = dispatch => ({
+  selectQuiz: quiz => dispatch(openQuizPreview(quiz)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizList);
