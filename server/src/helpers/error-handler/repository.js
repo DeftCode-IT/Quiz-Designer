@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const errorConfig = require('../../configs').errors;
+const errorConfig = require('../../config').errors;
 
 const errorFormater = err => {
   let errorSupport = _.pick(errorConfig, [err.message, err.name]);

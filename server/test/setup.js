@@ -1,25 +1,49 @@
+process.env.NODE_ENV = 'test';
+
 const mongoose = require('mongoose');
+const _ = require('lodash');
 const p = require('bluebird');
-const config = require('./../src/config');
+const { config } = require('./../src/config');
+const createUser = require('./../src/routes/auth/auth.helpers').create;
+const quiz = require('./../src/models/quiz');
 const user = require('./../src/models/user');
-const dbConfig = config.database.test;
+const helpers = require('./helpers');
+const dbConfig = config.databaseConfig.test;
 
 const options = {
   promiseLibrary: p,
   useMongoClient: true
 };
 
-before(done => {
-  const uri = `mongodb://${dbConfig.dbUserName}:${dbConfig.dbPass}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`;
+const uri = `mongodb://${dbConfig.dbUserName}:${dbConfig.dbPass}@${dbConfig.host}:${dbConfig.port}/${dbConfig.dbName}`;
 
+before(done => {
   mongoose.connect(uri, options).then(() => {
-    mongoose.connection.dropDatabase(() => {
-      user.create({
-        email: 'example@example.com',
-        password: '$2a$10$1Dih.A4T/LsoFnqyYHo93u25Wkv67wKHTr8sDANrh9c2BiJR8ZjF6'
-      }).then(() => {
-        done();
+    const removeCollectionPromises = [
+      quiz.remove({}),
+      user.remove({})
+    ];
+
+    p.all(removeCollectionPromises)
+      .then(() => {
+        p.all([
+          createUser({email: helpers.constants.user1.email, password: helpers.constants.user1.password}),
+          createUser({email: helpers.constants.user2.email, password: helpers.constants.user1.password})
+        ]).then(res => {
+          helpers.constants.user1 = _.assign(helpers.constants.user1, res[0]);
+          helpers.constants.user2 = _.assign(helpers.constants.user2, res[1]);
+
+          p.all([
+            quiz.create(helpers.createQuiz({title: 'First title of quiz', createdBy: res[0]._id})),
+            quiz.create(helpers.createQuiz({title: 'Second title of quiz', createdBy: res[1]._id})),
+            quiz.create(helpers.createQuiz({title: 'Third title of quiz', createdBy: res[1]._id}))
+          ]).then(() => {
+            done();
+          });
+        })
+      })
+      .catch(err => {
+        console.log('ERROR: ', err);
       });
-    });
   });
 });
