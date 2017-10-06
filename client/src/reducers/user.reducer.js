@@ -3,6 +3,8 @@ import { isAuthenticated } from '../utils/auth';
 
 const initState = {
   isLoggedIn: isAuthenticated(),
+  isStart: false,
+  isError: false,
 };
 
 export default function (state = initState, action) {

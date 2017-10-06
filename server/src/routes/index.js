@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./auth');
-const routesTest = require('./test');
+const quizzesRoutes = require('./quizzes');
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router
   .use(bodyParser.urlencoded({
     extended: true
   }))
-  .use('/', routesTest)
-  .use('/auth', authRoutes);
+  .use('/auth', authRoutes)
+  .use('/quizzes', quizzesRoutes);
 
 module.exports = router;

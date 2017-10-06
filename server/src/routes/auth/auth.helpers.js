@@ -2,16 +2,15 @@ const p = require('bluebird');
 const _ = require('lodash');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
-const userModel = require('../../models').user;
-const { errors } = require('../../configs/index');
-const { generateToken } = require('../../middlewares/json-web-token');
+
+const { userModel } = require('./../../models');
+const { errors } = require('../../config/index');
+const { generateToken } = require('./../../middlewares/json-web-token/repository');
 
 mongoose.Promise = p;
 
-const removeFragileData = user => _.omit(user.toJSON(), [
-  'password',
-  '__v',
-  '_id'
+const removeFragileData = user => _.omit(user, [
+  'password'
 ]);
 
 const login = body => {
@@ -27,7 +26,7 @@ const login = body => {
         return p.reject(Error(errors.INVALID_CREDENTIALS.name));
       }
 
-      return _.pick(user, ['password']);
+      return _.pick(user, ['_id']);
     })
     .then(generateToken);
 };
@@ -49,6 +48,11 @@ const create = data => {
 
       user.password = bcrypt.hashSync(user.password);
       return userModel.create(user);
+    })
+    .then(createdUser => {
+      const createdUserObject = createdUser.toJSON();
+      const payload = _.pick(createdUserObject, ['_id']);
+      return _.assign(createdUserObject, { token: generateToken(payload) });
     })
     .then(removeFragileData);
 };

@@ -1,18 +1,17 @@
-process.env.NODE_ENV = 'test';
-
 const chai = require('chai');
 const request = require('supertest');
 const app = require('./../src/index');
+const helpers = require('./helpers');
 chai.should();
 
-describe('Authorization and authentication', done => {
+describe('Authorization and authentication', () => {
   describe('Testing /login endpoint', () => {
     it('should login and get token in response', done => {
       request(app)
       .post('/api/auth/login')
       .send({
-        email: 'example@example.com',
-        password: 'examplepassword'
+        email: helpers.constants.user1.email,
+        password: helpers.constants.user1.password
       })
       .expect(res => {
         res.body.should.have.property('data');
@@ -60,7 +59,7 @@ describe('Authorization and authentication', done => {
       request(app)
       .post('/api/auth/register')
       .send({
-        email: 'example2@example.com',
+        email: 'example3@example.com',
         password: 'examplepassword2'
       })
       .expect(res => {

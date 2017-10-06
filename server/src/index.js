@@ -1,13 +1,16 @@
-require('./configs/database')();
+require('./config/database')();
+
 const express = require('express');
 const morgan = require('morgan');
-const config = require('./config');
+const swaggerUi = require('swagger-ui-express');
+
+const swaggerDocument = require('./swagger.json');
+
+const { config } = require('./config');
 const logger = require('./helpers/logger');
 const routes = require('./routes');
 const errorHandler = require('./middlewares/error-handler');
 const allowCrossDomain = require('./middlewares/alllow-cross-domain');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
 
 const app = express();
 

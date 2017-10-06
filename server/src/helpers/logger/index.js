@@ -1,5 +1,5 @@
 const winston = require('winston');
-const { loggerConfig } = require('../../config');
+const { loggerConfig } = require('../../config/config');
 
 let logger;
 
@@ -19,6 +19,5 @@ if (process.env.NODE_ENV !== 'test') {
     ]
   });
 }
-
 
 module.exports = logger;

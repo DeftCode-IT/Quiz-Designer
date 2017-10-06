@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { loginUser } from '../actions/user.actions';
+import constanst from '../utils/constants';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -13,6 +14,9 @@ class LoginBox extends React.Component {
     this.state = {
       email: '',
       password: '',
+      isLoading: false,
+      hasError: false,
+      errorMsg: '',
     };
 
     this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -27,10 +31,17 @@ class LoginBox extends React.Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    this.props.login(email, password).then(() => {
-      this.props.history.push('/list');
-    });
-    // .catch(error => console.log(error)); // uncomment only for debugging
+    this.setState({ isLoading: true });
+    this.props.login(email, password)
+      .then(() => {
+        this.setState({ isLoading: false });
+        this.props.history.push('/list');
+      })
+      .catch(error => {
+        const { errorMsg } = constanst;
+        const errorName = error.response.data.name;
+        this.setState({ hasError: true, isLoading: false, errorMsg: errorMsg[errorName] });
+      });
   }
 
   render() {
@@ -40,6 +51,11 @@ class LoginBox extends React.Component {
           <h1 className="qd-login-box__title">Witaj!</h1>
           <Input className="qd-login-box__input" label="Login" value={this.state.email} onChange={e => this.onChangeInput(e, 'email')} placeholder="Twój login..." />
           <Input className="qd-login-box__input" label="Hasło" value={this.state.password} onChange={e => this.onChangeInput(e, 'password')} type="password" placeholder="Twoje hasło..." />
+          {this.state.hasError ?
+            <div className="qd-login-box__error">
+              { this.state.errorMsg }
+            </div>
+            : null}
           <div className="qd-login-box__actions qd-actions">
             <Link to="/register">
               <Button className="actions__btn" type="button" animated>
@@ -49,12 +65,18 @@ class LoginBox extends React.Component {
                 </Button.Content>
               </Button>
             </Link>
-            <Button className="actions__btn" type="submit" animated>
-              <Button.Content visible>Zaloguj się</Button.Content>
-              <Button.Content hidden>
-                <Icon name="right arrow" />
-              </Button.Content>
-            </Button>
+            {this.state.isStart ?
+              <Button className="actions__btn" type="submit" animated>
+                <img className="actions__loader" src="src/images/loader.svg" alt="" />
+              </Button>
+              :
+              <Button className="actions__btn" type="submit" animated>
+                <Button.Content visible>Zaloguj się</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="right arrow" />
+                </Button.Content>
+              </Button> }
+
           </div>
         </form>
         <a className="qd-missing-pass-link" href="/">Nie pamiętasz hasła?</a>
