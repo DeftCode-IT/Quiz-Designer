@@ -4,19 +4,25 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REGISTER_USER = 'REGISTER_USER';
 
+
 export function loginUser(email, password) {
-  return dispatch => login(email, password).then(res => {
-    const token = res.data.data.token;
-    saveToken(token);
+  return dispatch => login(email, password)
+    .then(res => {
+      const token = res.data.data.token;
+      saveToken(token);
 
-    dispatch({
-      type: LOGIN_USER,
-      isLoggedIn: true,
-    });
+      dispatch({
+        type: LOGIN_USER,
+        isLoggedIn: true,
+        isStart: false,
+        isError: false,
+      });
 
-    return res;
-  });
+      return res;
+    },
+    );
 }
+
 
 export function logoutUser() {
   return dispatch => {
