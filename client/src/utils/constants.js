@@ -3,6 +3,7 @@ export default {
   endpoints: {
     register: 'auth/register',
     login: 'auth/login',
+    quizzes: 'quizzes',
   },
   quizPreviewHeight: 250,
   errorMsg: {
@@ -10,5 +11,3 @@ export default {
     MISSING_CREDENTIALS: 'Pola formularza nie zostały wypełnione',
   },
 };
-
-export default constants;
