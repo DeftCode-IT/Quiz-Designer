@@ -46,6 +46,12 @@ class QuizList extends React.Component {
             accessor: 'description',
           },
           {
+            Header: 'Wersja',
+            accessor: 'version',
+            maxWidth: 150,
+            style: { textAlign: 'center' },
+          },
+          {
             Header: 'Data utworzenia',
             accessor: 'createdAt',
             maxWidth: 200,
