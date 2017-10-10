@@ -29,6 +29,8 @@ const quizSchema = mongoose.Schema({
     required: true
   },
   createdBy: String,
+  createdDate: Number,
+  updatedDate: Number,
   questions: [
     {
       index: Number,
@@ -42,8 +44,13 @@ const quizSchema = mongoose.Schema({
   ],
   results: [
     {
-      questionIndex: Number,
-      answers: [Number]
+      score: Number,
+      answers: [
+        {
+          questionIndex: Number,
+          answer: [Number]
+        }
+      ]
     }
   ]
 });
