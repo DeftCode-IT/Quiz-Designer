@@ -6,6 +6,7 @@ import { openQuizPreview, getQuizzesList } from '../../actions/quiz-list.actions
 import QuizStatus from './quiz-status.component';
 import QuizPassingPercentage from './quiz-passing-percentage.component';
 import constants from './../../utils/constants';
+import { formatDate, calculatePercentage } from '../../utils/quiz-list';
 
 class QuizList extends React.Component {
   constructor(props) {
@@ -17,14 +18,18 @@ class QuizList extends React.Component {
     this.props.getQuizzes();
   }
 
+
   changeQuizArray() {
-    return this.props.quizzes.map(item => {
-      const question = item;
-      const questionsCount = question.questions.length;
-      const filledQuizesCount = question.results.length;
-      question.questionsCount = questionsCount;
-      question.filledQuizesCount = filledQuizesCount;
-      return question;
+    return this.props.quizzes.map(quiz => {
+      const currentQuiz = quiz;
+      const questionsCount = currentQuiz.questions.length;
+      const filledQuizesCount = currentQuiz.results.length;
+      const date = new Date(currentQuiz.createdDate);
+      currentQuiz.createdAt = formatDate(date);
+      currentQuiz.questionsCount = questionsCount;
+      currentQuiz.filledQuizesCount = filledQuizesCount;
+      currentQuiz.passedQuizesPercentage = calculatePercentage(quiz);
+      return currentQuiz;
     });
   }
 
