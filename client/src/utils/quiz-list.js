@@ -10,23 +10,21 @@ export const formatDate = date => {
   const year = date.getFullYear();
   const month = date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth();
   const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-  const hour = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
-  const minute = date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
 
-  return `${year}-${month}-${day} ${hour}:${minute}`;
+  return `${year}-${month}-${day}`;
 };
 
 export const calculatePercentage = quiz => {
-  const pointsToSuccess = quiz.pointsToSuccess;
-  const allFilledQuiz = quiz.results.length;
-  let passedQuizzes = 0;
+  const numberOfResults = quiz.results.length;
+  const numberOfPassedQuizzes = quiz.results.reduce((container, result) => {
+    let newContainer = container;
+    if (result.score >= quiz.pointsToSuccess) newContainer = container + 1;
+    return newContainer;
+  }, 0);
 
-  if (allFilledQuiz > 1) {
-    quiz.results.forEach(result => {
-      passedQuizzes = result.score >= pointsToSuccess ? passedQuizzes + 1 : passedQuizzes;
-    });
-    return (passedQuizzes / allFilledQuiz) * 100;
+  if (numberOfResults >= 1) {
+    return (numberOfPassedQuizzes / numberOfResults) * 100;
   }
 
-  return (1 / allFilledQuiz) * 100;
+  return 0;
 };
