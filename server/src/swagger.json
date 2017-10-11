@@ -58,7 +58,17 @@
         "responses": {
           "201": {
             "schema": {
-              "$ref": "#/definitions/User"
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "example@example.com"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "ks84nfa92mxy.d8snsfj38sdjg9.jdadosjshqos937"
+                }
+              }
             }
           },
           "error": {
@@ -241,6 +251,7 @@
             "name": "questions",
             "in": "body",
             "description": "Questions of quiz",
+            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -510,6 +521,8 @@
         "status",
         "version",
         "createdBy",
+        "createdDate",
+        "updatedDate",
         "questions"
       ],
       "properties": {
@@ -546,6 +559,14 @@
           "example": 4
         },
         "createdBy": {
+          "type": "string",
+          "example": "someuserid312331mdkdasda2giyzx"
+        },
+        "createdDate": {
+          "type": "string",
+          "example": "someuserid312331mdkdasda2giyzx"
+        },
+        "updatedDate": {
           "type": "string",
           "example": "someuserid312331mdkdasda2giyzx"
         },
@@ -606,24 +627,40 @@
       }
     },
     "Result": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": [
-          "questionIndex",
-          "answers"
-        ],
-        "properties": {
-          "questionIndex": {
+      "type": "object",
+      "required": [
+        "answers",
+        "result"
+      ],
+      "properties": {
+        "answers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Answer"
+          }
+        },
+        "score": {
+          "type": "integer",
+          "example": 22
+        }
+      }
+    },
+    "Answer": {
+      "type": "object",
+      "required": [
+        "questionIndex",
+        "answers"
+      ],
+      "properties": {
+        "questionIndex": {
+          "type": "integer",
+          "example": 1
+        },
+        "answer": {
+          "type": "array",
+          "items": {
             "type": "integer",
-            "example": 1
-          },
-          "answers": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "example": [1, 3]
-            }
+            "example": [1, 3]
           }
         }
       }
