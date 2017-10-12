@@ -3,6 +3,7 @@ export default {
   endpoints: {
     register: 'auth/register',
     login: 'auth/login',
+    quizzes: 'quizzes',
   },
   quizPreviewHeight: 250,
   errorMsg: {
