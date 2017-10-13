@@ -21,7 +21,6 @@ class QuizList extends React.Component {
 
   changeQuizArray() {
     return this.props.quizzes.map(quiz => {
-      console.log(quiz.results);
       const currentQuiz = quiz;
       const questionsCount = currentQuiz.questions.length;
       const filledQuizesCount = currentQuiz.results.length;
