@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { loginUser } from '../actions/user.actions';
 import constanst from '../utils/constants';
+import loader from '../images/loader.svg';
 
 class LoginBox extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class LoginBox extends React.Component {
     this.state = {
       email: '',
       password: '',
-      isLoading: false,
+      isStart: false,
       hasError: false,
       errorMsg: '',
     };
@@ -31,16 +32,16 @@ class LoginBox extends React.Component {
   onSubmitForm(event) {
     event.preventDefault();
     const { email, password } = this.state;
-    this.setState({ isLoading: true });
+    this.setState({ isStart: true });
     this.props.login(email, password)
       .then(() => {
-        this.setState({ isLoading: false });
+        this.setState({ isStart: false });
         this.props.history.push('/list');
       })
       .catch(error => {
         const { errorMsg } = constanst;
         const errorName = error.response.data.name;
-        this.setState({ hasError: true, isLoading: false, errorMsg: errorMsg[errorName] });
+        this.setState({ hasError: true, isStart: false, errorMsg: errorMsg[errorName] });
       });
   }
 
@@ -67,7 +68,7 @@ class LoginBox extends React.Component {
             </Link>
             {this.state.isStart ?
               <Button className="actions__btn" type="submit" animated>
-                <img className="actions__loader" src="src/images/loader.svg" alt="" />
+                <img className="actions__loader" src={loader} alt="" />
               </Button>
               :
               <Button className="actions__btn" type="submit" animated>
