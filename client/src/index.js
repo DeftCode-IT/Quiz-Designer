@@ -21,6 +21,7 @@ const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(reduxThunk),
 ));
 
+
 const App = () => (
   <HashRouter>
     <div>
@@ -33,8 +34,7 @@ const App = () => (
           <PrivateRoute
             path="/list"
             component={QuizListPage}
-            if={isAuthenticated()}
-            redirect="/login"
+            redirectUrl="/login"
           />
         </Switch>
       </main>
