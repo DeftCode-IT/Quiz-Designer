@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link, withRouter } from 'react-router-dom';
+import { Redirect, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { loginUser } from '../actions/user.actions';
 import constanst from '../utils/constants';
 import loader from '../images/loader.svg';
@@ -16,6 +15,7 @@ class LoginBox extends React.Component {
       email: '',
       password: '',
       isStart: false,
+      isLogged: false,
       hasError: false,
       errorMsg: '',
     };
@@ -35,8 +35,7 @@ class LoginBox extends React.Component {
     this.setState({ isStart: true });
     this.props.login(email, password)
       .then(() => {
-        this.setState({ isStart: false });
-        this.props.history.push('/list');
+        this.setState({ isStart: false, isLogged: true });
       })
       .catch(error => {
         const { errorMsg } = constanst;
@@ -46,6 +45,11 @@ class LoginBox extends React.Component {
   }
 
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/list' } };
+    if (this.state.isLogged) {
+      return <Redirect to={from} />;
+    }
+
     return (
       <div className="qd-login-box">
         <form onSubmit={e => this.onSubmitForm(e)}>
@@ -87,7 +91,6 @@ class LoginBox extends React.Component {
 }
 
 LoginBox.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
   login: PropTypes.func.isRequired,
 };
 

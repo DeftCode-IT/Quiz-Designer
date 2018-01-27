@@ -9,5 +9,6 @@ export default {
   errorMsg: {
     INVALID_CREDENTIALS: 'Niepoprawne dane do logowania',
     MISSING_CREDENTIALS: 'Pola formularza nie zostały wypełnione',
+    USER_EXISTS: 'Użytkonik o danym e-mailu istnije w bazie',
   },
 };

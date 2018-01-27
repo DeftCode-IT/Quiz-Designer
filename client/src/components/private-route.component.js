@@ -10,7 +10,11 @@ const PrivateRoute = props => {
   return (
     shouldRender
       ? <Route path={path} component={Component} />
-      : <Redirect to={redirectUrl} />
+      : <Redirect to={{
+        pathname: redirectUrl,
+        state: { from: props.location },
+      }}
+      />
   );
 };
 
