@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link, withRouter, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/user.actions';
@@ -90,7 +90,6 @@ class RegisterBox extends React.Component {
 }
 
 RegisterBox.propTypes = {
-  // history: ReactRouterPropTypes.history.isRequired,
   register: PropTypes.func.isRequired,
 };
 
@@ -98,4 +97,4 @@ const mapDispatchToProps = dispatch => ({
   register: (email, password) => dispatch(registerUser(email, password)),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(RegisterBox));
+export default connect(null, mapDispatchToProps)(RegisterBox);

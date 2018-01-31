@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Input, Button, Icon } from 'semantic-ui-react';
 import { Redirect, Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { loginUser } from '../actions/user.actions';
 import constanst from '../utils/constants';
 import loader from '../images/loader.svg';
@@ -92,6 +93,7 @@ class LoginBox extends React.Component {
 
 LoginBox.propTypes = {
   login: PropTypes.func.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 
@@ -99,4 +101,4 @@ const mapDispatchToProps = dispatch => ({
   login: (email, password) => dispatch(loginUser(email, password)),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(LoginBox));
+export default withRouter(connect(null, mapDispatchToProps)(LoginBox));
