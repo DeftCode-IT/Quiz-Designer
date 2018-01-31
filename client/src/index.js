@@ -28,14 +28,14 @@ const App = () => (
       <Navbar />
       <main className="qd-main-container">
         <Switch>
-          {/* { isAuthenticated() ? <Redirect exact from="/" to="/list" /> : <Redirect exact from="/" to="/login" /> } */}
           <Route
+            exact
             path="/"
             render={() => {
               if (isAuthenticated()) {
-                return <Redirect exact from="/" to="/list" />;
+                return <Redirect from="/" to="/list" />;
               }
-              return <Redirect exact from="/" to="/login" />;
+              return <Redirect from="/" to="/login" />;
             }}
           />
           <Route path="/login" component={LoginPage} />
