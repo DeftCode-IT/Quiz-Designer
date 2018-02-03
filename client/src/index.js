@@ -44,6 +44,7 @@ const App = () => (
             path="/list"
             component={QuizListPage}
             redirectUrl="/login"
+            canUse={isAuthenticated()}
           />
         </Switch>
       </main>
