@@ -1,10 +1,10 @@
 import React from 'react';
 import { Input, Button, Icon } from 'semantic-ui-react';
-import { Link, withRouter } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/user.actions';
+import constants from '../utils/constants';
 
 class RegisterBox extends React.Component {
   constructor(props) {
@@ -13,6 +13,9 @@ class RegisterBox extends React.Component {
       email: '',
       password: '',
       repeatedPassword: '',
+      isRegistered: false,
+      errorMsg: '',
+      hasError: false,
     };
 
     this.onSubmitForm = this.onSubmitForm.bind(this);
@@ -28,13 +31,23 @@ class RegisterBox extends React.Component {
     const { email, password, repeatedPassword } = this.state;
     if (password === repeatedPassword) {
       this.props.register(email, password).then(() => {
-        this.props.history.push('/login');
-      });
-      // .catch(error => console.log(error)); // uncomment only for debugging
+        this.setState({ isRegistered: true });
+      })
+        .catch(error => {
+          const { errorMsg } = constants;
+          const errorName = error.response.data.name;
+          this.setState({ hasError: true, errorMsg: errorMsg[errorName] });
+        });
+    } else {
+      this.setState({ hasError: true, errorMsg: 'Hasła nie są identyczne' });
     }
   }
 
   render() {
+    if (this.state.isRegistered) {
+      return <Redirect to="/login" />;
+    }
+
     return (
       <div className="qd-register-box">
         <form onSubmit={e => this.onSubmitForm(e)}>
@@ -49,6 +62,11 @@ class RegisterBox extends React.Component {
             type="password"
             placeholder="Powtórz hasło..."
           />
+          {this.state.hasError ?
+            <div className="qd-login-box__error">
+              { this.state.errorMsg }
+            </div>
+            : null}
           <div className="qd-register-box__actions qd-actions">
             <Link to="/login">
               <Button className="actions__btn" type="button" animated>
@@ -72,7 +90,6 @@ class RegisterBox extends React.Component {
 }
 
 RegisterBox.propTypes = {
-  history: ReactRouterPropTypes.history.isRequired,
   register: PropTypes.func.isRequired,
 };
 
@@ -80,4 +97,4 @@ const mapDispatchToProps = dispatch => ({
   register: (email, password) => dispatch(registerUser(email, password)),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(RegisterBox));
+export default connect(null, mapDispatchToProps)(RegisterBox);
