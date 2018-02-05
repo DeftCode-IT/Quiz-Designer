@@ -41,7 +41,7 @@ class LoginBox extends React.Component {
       .catch(error => {
         const { errorMsg } = constanst;
         const errorName = error.response.data.name;
-        this.setState({ hasError: true, isStart: false, errorMsg: errorMsg[errorName] });
+        this.setState({ hasError: true, isStart: false, isLogged: false, errorMsg: errorMsg[errorName] });
       });
   }
 
